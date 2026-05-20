@@ -1,0 +1,155 @@
+/* ==========================================================================
+   STYLE DETAIL DOKTER UMUM (detail_dokter.css)
+   ========================================================================== */
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f6fb 100%);
+}
+
+/* Judul Utama Atas */
+.header-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-title h1 {
+    color: #1D60A1;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.header-title p {
+    color: #334155;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Layout Grid Kolom Atas (Kanan & Kiri) */
+.row-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.column-box {
+    flex: 1;
+    min-width: 320px;
+}
+
+.column-box h2 {
+    color: #1D60A1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.column-box p {
+    color: #475569;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Styling List Poin Berlambang Bullet */
+.bullet-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bullet-list li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.bullet-list li::before {
+    content: "•";
+    color: #334155;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Bagian Tengah Bawah (Keunggulan) */
+.center-column-box {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+.center-column-box h2 {
+    color: #1D60A1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.center-column-box .bullet-list {
+    display: inline-block;
+    text-align: left;
+}
+
+/* Bagian Ajakan / Tombol Daftar */
+.cta-register {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cta-register h3 {
+    color: #1D60A1;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cta-register p {
+    color: #475569;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.btn-submit-register {
+    /* KUNCI UTAMA: Mengubah sifat a agar bisa diberi padding box dengan rapi */
+    display: inline-block; 
+    text-decoration: none; /* Menghilangkan garis bawah khas link bawaan html */
+    
+    background-color: #1D60A1;
+    color: white;
+    border: none;
+    
+    /* Padding diatur: 14px atas-bawah, dan 45px kanan-kiri agar tombol melebar elegan */
+    padding: 14px 45px; 
+    
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    
+    /* Memberikan bayangan halus di bawah tombol agar estetik */
+    box-shadow: 0 4px 12px rgba(29, 96, 161, 0.2); 
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-submit-register:hover {
+    background-color: #154675;
+    box-shadow: 0 6px 18px rgba(29, 96, 161, 0.3);
+    transform: translateY(-1px); /* Efek terangkat sedikit saat kursor nempel */
+}
+
+.btn-submit-register:active {
+    transform: translateY(1px);
+}

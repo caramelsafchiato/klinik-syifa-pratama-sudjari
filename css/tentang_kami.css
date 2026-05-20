@@ -1,0 +1,188 @@
+/* ==========================================================================
+   STYLE HALAMAN TENTANG KAMI (tentang_kami.css)
+   ========================================================================== */
+
+.about-main {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #334155;
+    background-color: #ffffff;
+    padding-bottom: 60px;
+}
+
+/* 1. Hero Banner Top */
+
+
+.about-hero h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* 2. Intro Subtitle Section */
+.about-intro-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 5% 40px 5%;
+    text-align: center;
+}
+
+.about-intro-section h2 {
+    color: #1D60A1;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.about-intro-section p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* 3. Sekilas Tentang Section (Two Columns) */
+.about-history-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 5% 50px 5%;
+}
+
+.about-history-section h2 {
+    text-align: center;
+    color: #1D60A1;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 40px;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.history-grid p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: justify;
+    color: #334155;
+}
+
+/* 4. Visi Misi Section */
+.about-vision-section {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px 5% 50px 5%;
+    text-align: center;
+}
+
+.about-vision-section h2 {
+    color: #1D60A1;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.vision-block {
+    margin-bottom: 40px;
+}
+
+.vision-block h3, .mission-block h3 {
+    color: #1D60A1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.vision-block p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #334155;
+    text-align: center;
+}
+
+/* List Poin Misi Lurus Berurutan */
+.mission-list {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.mission-list li {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* 5. Alamat & Lokasi Section */
+.about-address-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 5% 20px 5%;
+    text-align: center;
+}
+
+.about-address-section h2 {
+    color: #1D60A1;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.map-wrapper {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    display: block;
+}
+
+.address-text {
+    font-size: 1.05rem;
+    color: #334155;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.maps-link {
+    font-size: 1.05rem;
+    color: #334155;
+}
+
+.maps-link a {
+    color: #1D60A1;
+    text-decoration: underline;
+}
+
+.maps-link a:hover {
+    color: #154675;
+}
+
+/* --- RESPONSIVE LAYOUT --- */
+@media (max-width: 768px) {
+    .history-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+    .about-history-section h2, 
+    .about-vision-section h2, 
+    .about-address-section h2 {
+        font-size: 1.8rem;
+    }
+    .map-wrapper iframe {
+        height: 300px;
+    }
+}

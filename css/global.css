@@ -1,0 +1,209 @@
+/* ==========================================
+   RESET & GLOBAL STYLES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #333333;
+    padding-top: 80px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==========================================
+   HEADER / NAVBAR STYLES
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    
+    position: fixed;   /* Membuat navbar terkunci melayang */
+    top: 0;            /* Menempel pas di batas paling atas layar */
+    left: 0;           /* Menempel di batas kiri layar */
+    width: 100%;       /* Lebarnya penuh memenuhi layar kanan-kiri */
+    z-index: 1000;     /* Memastikan navbar selalu berada di lapisan paling depan menimpa konten form */
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar .logo img {
+    height: 45px;
+    width: auto;
+}
+
+.navbar .logo span {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 1.1rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Dipersepit sedikit agar ada ruang untuk padding border */
+}
+
+/* Base style untuk semua link di navbar */
+.nav-links a {
+    color: #475569;
+    font-weight: 500;
+    padding: 10px 0;
+    margin: 0 15px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Efek hover teks biasa */
+.nav-links a:hover {
+    color: #1D60A1; /* Menggunakan Biru #1D60A1 */
+}
+
+/* ==========================================================================
+   EFEK GARIS BAWAH BIRU MENU AKTIF (SESUAI MOCKUP)
+   ========================================================================== */
+.nav-links a.active {
+    color: #0f172a; /* Warna teks menu aktif dibuat sedikit lebih tegas */
+    font-weight: 600;
+}
+
+/* Membuat garis bawah presisi menggunakan pseudo-element ::after */
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px; /* Mengatur jarak garis bawah dari teks navbar */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Ketebalan garis bawah */
+    background-color: #1D60A1; /* Warna biru utama mockup */
+    border-radius: 2px;
+}
+
+/* ==========================================
+   TOMBOL LOGIN & DAFTAR (PENGECUALIAN GARIS)
+   ========================================== */
+.btn-login {
+    color: #1D60A1 !important;
+    font-weight: 600 !important;
+    margin: 0 10px !important;
+}
+
+.btn-daftar {
+    background-color: #1D60A1;
+    color: #ffffff !important;
+    padding: 10px 20px !important;
+    border-radius: 6px;
+    font-weight: 600;
+    margin: 0 5px !important;
+    transition: background-color 0.3s;
+}
+
+.btn-daftar:hover {
+    background-color: #154675; /* Biru agak gelap saat dihover */
+}
+
+/* Menghilangkan paksa efek garis bawah pada tombol login & daftar */
+.nav-links a.btn-login::after,
+.nav-links a.btn-daftar::after {
+    display: none !important;
+}
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
+.main-footer {
+    background-color: #1D60A1; /* Warna diganti ke Biru #1D60A1 agar serasi */
+    color: #ffffff;
+    padding: 50px 5% 20px 5%;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-info img {
+    height: 50px;
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.footer-info h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.footer-links, .footer-contact, .footer-hours {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-links h4, .footer-contact h4, .footer-hours h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #93c5fd;
+}
+
+.footer-contact p, .footer-hours p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #e2e8f0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}

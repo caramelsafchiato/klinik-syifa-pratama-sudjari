@@ -1,0 +1,113 @@
+/* ==========================================================================
+   STYLE HALAMAN ARTIKEL KESEHATAN (artikel.css)
+   ========================================================================== */
+
+.artikel-main-container {
+    max-width: 1000px; /* Lebar dibatasi agar kotak terfokus rapi di tengah */
+    margin: 0 auto;
+    padding: 50px 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Judul Utama Atas */
+.artikel-page-title {
+    text-align: center;
+    color: #1D60A1; /* Biru Utama */
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* Pembungkus List Artikel Kebawah */
+.artikel-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Jarak antar baris artikel */
+}
+
+/* Kotak Luar Utama Setiap Baris Artikel */
+.artikel-row-card {
+    background-color: #f0f4f8; /* Latar abu-abu cerah sesuai gambar */
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Membagi foto dan kotak biru hampir seimbang */
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* Sisi Kiri: Foto Artikel */
+.artikel-image-area {
+    width: 100%;
+    height: 230px; /* Tinggi dikunci agar seragam */
+}
+
+.artikel-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Foto otomatis memotong rapi sesuai frame */
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+}
+
+/* Sisi Kanan: Kotak Biru Konten Teks */
+.artikel-content-blue-box {
+    background-color: #1D60A1; /* Biru Utama */
+    border-radius: 16px;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Menjaga tombol selalu berada rapi di bawah */
+    color: #ffffff;
+}
+
+.artikel-content-blue-box h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.artikel-content-blue-box p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e0f2fe; /* Putih agak kebiruan lembut agar nyaman dibaca */
+    margin-bottom: 20px;
+}
+
+/* Tombol Aksi Hijau Daun */
+.btn-selengkapnya-artikel {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #6da21a; /* Hijau daun sesuai mockup */
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 320px; /* Lebar maksimal tombol agar tidak terlalu panjang */
+    margin: 0 auto; /* Posisi tombol pas di tengah kotak */
+    border-radius: 20px; /* Lengkungan penuh berbentuk kapsul */
+    transition: background-color 0.2s;
+}
+
+.btn-selengkapnya-artikel:hover {
+    background-color: #558013; /* Hijau agak gelap saat didekati kursor */
+}
+
+/* Responsif Layout Layar HP/Tablet */
+@media (max-width: 768px) {
+    .artikel-row-card {
+        grid-template-columns: 1fr; /* Berubah menjadi tumpuk vertikal satu kolom */
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .artikel-image-area {
+        height: 200px;
+    }
+}

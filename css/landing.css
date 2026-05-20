@@ -1,0 +1,184 @@
+/* ==========================================
+   HERO / WELCOME SECTION & SLIDER
+   ========================================== */
+.hero-section {
+    text-align: center;
+    padding: 60px 10%;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f6fb 100%);
+}
+
+.hero-section h1 {
+    color: #1D60A1; /* Menggunakan Warna Biru Pilihanmu */
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    color: #475569;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Slider Style */
+.slider-container {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(29, 96, 161, 0.4); /* Biru transparan */
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.slider-btn:hover {
+    background-color: rgba(29, 96, 161, 0.8);
+}
+
+.slider-btn.prev { left: 20px; }
+.slider-btn.next { right: 20px; }
+
+/* ==========================================
+   TENTANG KAMI SECTION
+   ========================================== */
+.about-section {
+    text-align: center;
+    padding: 50px 15%;
+}
+
+.about-section h2 {
+    color: #1D60A1;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.about-section p {
+    color: #555555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.btn-more {
+    background-color: #1D60A1;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 600px;
+    transition: background-color 0.3s;
+}
+
+.btn-more:hover {
+    background-color: #154675;
+}
+
+/* ==========================================
+   LAYANAN KAMI SECTION (Gbr Diperbesar & Bisa Diklik)
+   ========================================== */
+.services-section {
+    text-align: center;
+    padding: 40px 10%;
+}
+
+.services-section h2 {
+    color: #1D60A1;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Hilangkan style default link pada kartu */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-service {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    width: 260px; /* Diperlebar sedikit agar gambar besar muat sempurna */
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+}
+
+.card-service:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(29, 96, 161, 0.15); /* Hover shadow warna biru tipis */
+}
+
+/* UKURAN GAMBAR LAYANAN DIPERBESAR */
+.card-service img {
+    width: 180px;  /* Ditambah ukurannya dari 100px */
+    height: 180px; /* Ditambah ukurannya dari 100px */
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.card-service h3 {
+    font-size: 1.2rem;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+/* ==========================================
+   DOKTER & JADWAL SECTION
+   ========================================== */
+.doctor-section {
+    text-align: center;
+    padding: 50px 10%;
+}
+
+.doctor-section h2 {
+    color: #1D60A1;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.doctor-image-container {
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.doctor-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

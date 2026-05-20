@@ -1,0 +1,161 @@
+/* ==========================================================================
+   STYLE HALAMAN DETAIL ARTIKEL (detail_artikel.css)
+   ========================================================================== */
+
+.detail-artikel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr; /* Kolom utama lebih lebar dibanding sidebar */
+    gap: 50px;
+}
+
+/* --- KELOMPOK UTAMA (KIRI) --- */
+.main-content-artikel h1 {
+    color: #1D60A1; /* Biru Utama */
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.meta-artikel {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.main-artikel-image {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* Teks Paragraf Artikel */
+.body-text-artikel p {
+    color: #334155;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.body-text-artikel h2 {
+    color: #1D60A1;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 35px 0 15px 0;
+}
+
+/* --- STYLING LIST BULLETS AGAR SEUKURAN DENGAN PARAGRAF --- */
+.body-text-artikel ul.artikel-bullets {
+    padding-left: 22px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.body-text-artikel ul.artikel-bullets li {
+    color: #334155;
+    /* KUNCI UTAMA: Ukuran font disamakan persis dengan p (1.05rem) dan tinggi baris yang renggang rapi */
+    font-size: 1.05rem; 
+    line-height: 1.7;
+    margin-bottom: 10px;
+    list-style-type: disc; /* Peluru bulat hitam rapi standar */
+    text-align: justify;
+}
+
+/* --- SIDEBAR BERITA TERBARU (KANAN) --- */
+.sidebar-artikel h3 {
+    color: #334155;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.sidebar-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.sidebar-item:hover img {
+    transform: scale(1.02);
+}
+
+.sidebar-meta {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.sidebar-item h4 {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+    transition: color 0.2s;
+}
+
+.sidebar-item:hover h4 {
+    color: #1D60A1;
+}
+
+/* --- RESPONSIVE LAYOUT (TABLET & HP) --- */
+@media (max-width: 992px) {
+    .detail-artikel-container {
+        grid-template-columns: 1fr; /* Menjadi satu kolom bertumpuk kebawah */
+        gap: 40px;
+    }
+    
+    .main-content-artikel h1 {
+        font-size: 1.9rem;
+    }
+
+    .sidebar-item {
+        flex-direction: row; /* Di layar kecil, gambar dan teks berdampingan */
+        gap: 15px;
+        align-items: center;
+    }
+
+    .sidebar-item img {
+        width: 120px;
+        height: 80px;
+    }
+    
+    .sidebar-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Membagi rekomendasi jadi 2 kolom */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar-list {
+        grid-template-columns: 1fr;
+    }
+}

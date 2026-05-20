@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/pendaftaran.css">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="registration-main">
+        <section class="form-container">
+            <h1 class="main-form-title">Pendaftaran</h1>
+            
+            <form id="formPendaftaran" onsubmit="prosesPendaftaran(event)">
+                
+                <div class="form-grid-top">
+                    <div class="form-group">
+                        <label for="layanan">Layanan <span class="required">*</span></label>
+                        <select id="layanan" required>
+                            <option value="" disabled selected>Pilih Layanan</option>
+                            <option value="Dokter Umum">Dokter Umum</option>
+                            <option value="Layanan Khitan">Layanan Khitan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dokter">Dokter <span class="required">*</span></label>
+                        <select id="dokter" required>
+                            <option value="" disabled selected>Pilih Dokter</option>
+                            <option value="dr. Usman Ali">dr. Usman Ali</option>
+                            <option value="dr. Difa Hussaina">dr. Difa Hussaina</option>
+                            <option value="dr. Bayu Andi">dr. Bayu Andi</option>
+                            <option value="dr. Sutjipto Utomo">dr. Sutjipto Utomo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal_kunjungan">Rencana Tanggal Kunjungan <span class="required">*</span></label>
+                        <input type="date" id="tanggal_kunjungan" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jam_kunjungan">Jam <span class="required">*</span></label>
+                        <select id="jam_kunjungan" required>
+                            <option value="" disabled selected>Pilih Jam</option>
+                            <option value="07.00 - 12.00">07.00 - 12.00</option>
+                            <option value="15.00 - 20.00">15.00 - 20.00</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h2 class="sub-form-title">Data Diri Pasien</h2>
+
+                <div class="form-stack-bottom">
+                    <div class="form-group full-width">
+                        <label for="nama">Nama Lengkap <span class="required">*</span></label>
+                        <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="nik">NIK <span class="required">*</span></label>
+                        <input type="text" id="nik" placeholder="Masukkan NIK" maxlength="16" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="tanggal_lahir">Tanggal Lahir <span class="required">*</span></label>
+                        <input type="date" id="tanggal_lahir" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="jenis_kelamin">Jenis Kelamin <span class="required">*</span></label>
+                        <select id="jenis_kelamin" required>
+                            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                            <option value="Laki - Laki">Laki - Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="alamat">Alamat <span class="required">*</span></label>
+                        <input type="text" id="alamat" placeholder="Masukkan alamat" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="nohp">No. Telepon <span class="required">*</span></label>
+                        <input type="text" id="nohp" placeholder="Masukkan no. telepon" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="Masukkan email">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="keluhan">Keluhan <span class="required">*</span></label>
+                        <input type="text" id="keluhan" placeholder="Masukkan keluhan" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="index.html" class="btn-back">Kembali</a>
+                    <button type="submit" class="btn-submit">Daftar</button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="modalBukti" class="modal-overlay">
+        <div class="modal-ticket">
+            <h2 class="modal-title">Pendaftaran Berhasil</h2>
+            <p class="success-msg">Terima kasih, <span id="pop-sapaan">Pasien</span>. Jadwal Anda telah kami catat.</p>
+            
+            <h3 class="detail-title">Detail Pendaftaran:</h3>
+            <div class="ticket-details">
+                <div class="ticket-row"><span class="ticket-label">Layanan:</span><span id="pop-layanan" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Dokter:</span><span id="pop-dokter" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Rencana Tanggal Kunjungan:</span><span id="pop-tanggal" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Jam:</span><span id="pop-jam" class="ticket-value">-</span></div>
+            </div>
+
+            <h3 class="detail-title">Detail Data Diri:</h3>
+            <div class="ticket-details">
+                <div class="ticket-row"><span class="ticket-label">Nama Lengkap:</span><span id="pop-nama" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">NIK:</span><span id="pop-nik" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Tanggal Lahir:</span><span id="pop-tgl-lahir" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Jenis Kelamin:</span><span id="pop-jk" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Alamat:</span><span id="pop-alamat" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">No. Telepon:</span><span id="pop-nohp" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Email:</span><span id="pop-email" class="ticket-value">-</span></div>
+                <div class="ticket-row"><span class="ticket-label">Keluhan:</span><span id="pop-keluhan" class="ticket-value">-</span></div>
+            </div>
+            
+            <div class="booking-zone">
+                <p class="booking-label">Kode Booking Anda:</p>
+                <div class="booking-code" id="pop-kode-booking">KSK-2026-P001</div>
+                <div style="margin: 15px 0;"><strong style="font-size: 1.2rem; letter-spacing: 2px;">[ QR CODE ]</strong></div>
+            </div>
+
+            <button class="btn-unduh" onclick="window.print()">Unduh</button>
+
+            <div class="rules-section">
+                <h4>Ketentuan pasien:</h4>
+                <ul>
+                    <li>Mohon tiba di klinik 15-30 menit sebelum jadwal estimasi untuk verifikasi data.</li>
+                    <li>Pastikan Nama Pasien sesuai dengan KTP/Kartu Identitas.</li>
+                    <li>Simpan dan tunjukkan Kode Booking kepada petugas pendaftaran saat tiba.</li>
+                    <li>Jika pasien belum hadir saat dipanggil 3x, nomor antrian akan dilewati.</li>
+                    <li>Transaksi pembayaran dilakukan di kasir klinik setelah pemeriksaan.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/component-loader.js"></script>
+    <script>
+        function prosesPendaftaran(event) {
+            event.preventDefault();
+
+            const layanan = document.getElementById('layanan').value;
+            const dokter = document.getElementById('dokter').value;
+            const tglKunjungan = document.getElementById('tanggal_kunjungan').value;
+            const jam = document.getElementById('jam_kunjungan').value;
+            const nama = document.getElementById('nama').value;
+            const nik = document.getElementById('nik').value;
+            const tglLahir = document.getElementById('tanggal_lahir').value;
+            const jk = document.getElementById('jenis_kelamin').value;
+            const alamat = document.getElementById('alamat').value;
+            const nohp = document.getElementById('nohp').value;
+            const email = document.getElementById('email').value || '-';
+            const keluhan = document.getElementById('keluhan').value;
+
+            const formatIndo = (dateStr) => {
+                if(!dateStr) return '-';
+                const opsi = { day: 'numeric', month: 'long', year: 'numeric' };
+                return new Date(dateStr).toLocaleDateString('id-ID', opsi);
+            };
+
+            document.getElementById('pop-sapaan').innerText = nama;
+            document.getElementById('pop-layanan').innerText = layanan;
+            document.getElementById('pop-dokter').innerText = dokter;
+            document.getElementById('pop-tanggal').innerText = formatIndo(tglKunjungan);
+            document.getElementById('pop-jam').innerText = jam + " WIB";
+            
+            document.getElementById('pop-nama').innerText = nama;
+            document.getElementById('pop-nik').innerText = nik;
+            document.getElementById('pop-tgl-lahir').innerText = formatIndo(tglLahir);
+            document.getElementById('pop-jk').innerText = jk;
+            document.getElementById('pop-alamat').innerText = alamat;
+            document.getElementById('pop-nohp').innerText = nohp;
+            document.getElementById('pop-email').innerText = email;
+            document.getElementById('pop-keluhan').innerText = keluhan;
+
+            const acakAngka = Math.floor(Math.random() * 900) + 100;
+            document.getElementById('pop-kode-booking').innerText = `KSK-2026-P${acakAngka}`;
+
+            document.getElementById('modalBukti').classList.add('show');
+        }
+    </script>
+</body>
+</html>

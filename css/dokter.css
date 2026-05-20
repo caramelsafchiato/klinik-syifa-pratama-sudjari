@@ -1,0 +1,179 @@
+/* ==========================================================================
+   STYLE HALAMAN DOKTER (dokter.css)
+   ========================================================================== */
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f6fb 100%);
+}
+
+/* --- SECTION 1: HEADER TEXT --- */
+.dokter-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.dokter-header h1 {
+    color: #1D60A1;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.dokter-header p {
+    color: #334155;
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* --- SECTION 2: TIM DOKTER GRID (SEJAJAR BEREMPAT) --- */
+.section-title {
+    text-align: center;
+    color: #1D60A1;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.dokter-grid {
+    display: flex;
+    justify-content: space-between; /* Membagi ruang secara merata kanan-kiri */
+    gap: 20px;                      /* Jarak antar kartu dikurangi agar pas berempat */
+    flex-wrap: nowrap;              /* DIPAKSA tidak boleh turun ke bawah */
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.card-dokter {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    flex: 1;                        /* Membuat lebar ke-4 kartu membagi rata secara otomatis */
+    min-width: 0;                   /* Mencegah kartu meluap/overflow */
+    padding: 25px 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Responsif untuk Layar Tablet & HP agar tidak terlalu sempit */
+@media (max-width: 992px) {
+    .dokter-grid {
+        flex-wrap: wrap;            /* Di layar kecil baru boleh turun/membagi baris */
+        justify-content: center;
+    }
+    .card-dokter {
+        flex: none;
+        width: 220px;               /* Lebar tetap di layar kecil */
+    }
+}
+
+/* Bingkai Foto Melengkung Sesuai Mockup UI */
+.image-wrapper {
+    position: relative;
+    width: 140px;                   /* Ukuran disesuaikan sedikit agar proporsional */
+    height: 140px;
+    margin: 0 auto 20px auto;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Aksen Hijau Kecil di Sudut Kanan Bawah Foto */
+.image-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    background-color: #72a82e;
+    border-radius: 0 0 8px 0;
+    border-top-left-radius: 12px;
+}
+
+.card-dokter h3 {
+    color: #1D60A1;
+    font-size: 1.15rem;             /* Ukuran teks disesuaikan sedikit agar muat sebaris */
+    font-weight: 700;
+    margin-bottom: 6px;
+    white-space: nowrap;            /* Mencegah nama dokter patah baris jika kepanjangan */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-dokter .spesialisasi {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* --- SECTION 3: TABEL JADWAL BESAR MENDATAR --- */
+.jadwal-section {
+    margin-top: 50px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+
+.table-jadwal {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.table-jadwal th {
+    background-color: #1D60A1;
+    color: #ffffff;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #154675;
+}
+
+.table-jadwal td {
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    vertical-align: middle;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.table-jadwal td:first-child {
+    font-weight: 700;
+    color: #0f172a;
+    background-color: #ffffff;
+    min-width: 200px;
+}
+
+.table-jadwal td .sub-spesialis {
+    font-weight: 500;
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.table-jadwal td p {
+    margin-bottom: 4px;
+}
+.table-jadwal td p:last-child {
+    margin-bottom: 0;
+}
