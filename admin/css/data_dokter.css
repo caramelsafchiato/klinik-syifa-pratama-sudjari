@@ -1,0 +1,336 @@
+/* ==========================================================================
+   STYLE SPESIFIK DATA DOKTER & JADWAL (admin/css/data_dokter.css)
+   ========================================================================== */
+
+/* HEADER & ACTION CONTROLS BAR */
+.doctor-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.action-controls-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Custom Box Select Filter Meniru Gambar 2 */
+.filter-select-box {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0 14px;
+    height: 42px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.filter-icon {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-right: 8px;
+}
+
+.select-filter-layanan {
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    padding-right: 10px;
+}
+
+/* Tombol Tambah Dokter Baru */
+.btn-tambah-dokter-baru {
+    background-color: #1D60A1;
+    color: #ffffff;
+    border: none;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(29, 96, 161, 0.15);
+    transition: background-color 0.2s ease;
+}
+
+.btn-tambah-dokter-baru:hover {
+    background-color: #154675;
+}
+
+/* TABLE STYLING COMPONENT */
+.doctor-profile-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.doctor-profile-cell img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f1f5f9;
+}
+
+.doc-text strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #1e293b;
+}
+
+.doc-text p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.schedule-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: 340px;
+}
+
+.tag-schedule {
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* TOGGLE STATUS */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #e2e8f0;
+    transition: .3s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: #1D60A1; }
+input:checked + .slider:before { transform: translateX(22px); }
+
+.btn-edit-jadwal {
+    background: none;
+    border: 1px solid #1D60A1;
+    color: #1D60A1;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+/* ========================================================================== 
+   MODAL OVERLAY TAMPILAN TAMBH DOKTER
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 24px;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal-content-box {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   FIX MODAL LAYOUT: CARD VERTIKAL TENGAH (GAMBAR 2 - image_560b42.png)
+   ========================================================================== */
+.width-tambah-dokter {
+    width: 540px; /* Dipersempit agar berwujud vertikal box manis */
+    padding: 35px 40px !important;
+}
+
+.form-pop-title {
+    font-size: 1.35rem;
+    color: #0f172a;
+    margin: 0 0 25px 0;
+    font-weight: 700;
+    text-align: left;
+}
+
+.pop-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Baris Khusus Picker Foto Sampingan */
+.upload-photo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.image-icon-trigger {
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #475569;
+}
+
+.upload-text-box {
+    flex: 1;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Grid Nama & STR Dokter Sejajar */
+.pop-form-grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pop-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pop-form-field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: left;
+}
+
+.pop-form-field label .required {
+    color: #ef4444;
+}
+
+.pop-form-field input,
+.pop-form-field select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #334155;
+}
+
+/* Custom Arrow Indicator Select */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper select {
+    appearance: none; /* Hilangkan arrow bawaan */
+    padding-right: 35px;
+}
+
+.select-wrapper::after {
+    content: "v";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) scaleX(1.3);
+    font-size: 0.75rem;
+    color: #64748b;
+    pointer-events: none;
+}
+
+/* Tombol Aksi Bawah */
+.pop-form-actions-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.btn-action-back {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 12px 35px;
+    border-radius: 25px; /* Bulat memanjang */
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-action-back:hover {
+    background-color: #f8fafc;
+}
+
+.btn-action-save {
+    background-color: #1D60A1;
+    border: none;
+    color: #ffffff;
+    padding: 12px 45px;
+    border-radius: 25px; /* Bulat memanjang */
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(29, 96, 161, 0.2);
+    transition: background-color 0.2s;
+}
+
+.btn-action-save:hover {
+    background-color: #154675;
+}

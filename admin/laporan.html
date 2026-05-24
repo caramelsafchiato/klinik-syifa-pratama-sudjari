@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Klinik - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/laporan.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="report-main-wrapper">
+                
+                <section class="report-white-card filter-range-box">
+                    <form id="formFilterLaporan" onsubmit="simulasiUpdateLaporan(event)">
+                        <div class="filter-flex-row">
+                            <div class="date-input-group">
+                                <label>Tanggal Mulai</label>
+                                <input type="date" value="2024-01-01" id="tglMulai">
+                            </div>
+                            <div class="date-input-group">
+                                <label>Tanggal Akhir</label>
+                                <input type="date" value="2024-01-31" id="tglAkhir">
+                            </div>
+                            <button type="submit" class="btn-submit-filter">Tampilkan Laporan</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="report-white-card chart-visualization-box">
+                    <h3 class="chart-main-title">Kunjungan Pasien per Hari</h3>
+                    <div class="chart-canvas-container">
+                        <canvas id="kunjunganBarChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="report-white-card summary-statistics-box">
+                    <h3 class="summary-section-title">Statistik Ringkasan</h3>
+                    
+                    <div class="summary-cards-row-grid">
+                        <div class="mini-grid-card bg-blue-theme">
+                            <p>Total kunjungan</p>
+                            <h2>279</h2>
+                            <span>Pasien bulan ini</span>
+                        </div>
+
+                        <div class="mini-grid-card bg-green-theme">
+                            <p>Pendapatan</p>
+                            <h2>Rp. 46.000.000,00</h2>
+                            <span>Bulan ini</span>
+                        </div>
+
+                        <div class="mini-grid-card bg-light-blue-theme">
+                            <p>Dokter Aktif</p>
+                            <h2>4</h2>
+                            <span>Dokter tersedia</span>
+                        </div>
+                    </div>
+
+                    <div class="export-buttons-action-row">
+                        <button class="btn-export-solid-blue" onclick="alert('Mencetak dokumen PDF Laporan...')">
+                            📥 Download PDF
+                        </button>
+                        <button class="btn-export-solid-green" onclick="alert('Mengekspor spreadsheet Excel Laporan...')">
+                            📊 Export Excel
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        // Ambil elemen canvas tempat meletakkan chart
+        const ctx = document.getElementById('kunjunganBarChart').getContext('2d');
+        
+        // Inisialisasi Chart.js tipe BAR (Diagram Batang) 100% Sesuai Contoh Gambar
+        const kunjunganBarChart = new Chart(ctx, {
+            type: 'bar', 
+            data: {
+                labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+                datasets: [{
+                    data: [31, 15, 20, 28, 18, 39], // Angka tinggi batang mengikuti mockup gambar
+                    backgroundColor: '#1D60A1', // Menggunakan warna biru utama Klinik Syifa Sudjari
+                    borderRadius: 6, // Membuat ujung atas batang sedikit melengkung rapi
+                    borderSkipped: false,
+                    barThickness: 50 // Mengunci ketebalan batang agar padat proporsional
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false // Mematikan kotak label legenda atas agar bersih
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 80, // Batas atas angka grid vertikal sesuai mockup gambar
+                        ticks: {
+                            stepSize: 20, // Kelipatan 0, 20, 40, 60, 80 sesuai gambar contoh
+                            color: '#64748b',
+                            font: { size: 12 }
+                        },
+                        grid: {
+                            color: '#f1f5f9',
+                            drawTicks: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false // Mematikan garis vertikal di area grafik
+                        },
+                        ticks: {
+                            color: '#64748b',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Fungsi simulasi update ketika range tanggal diubah
+        function simulasiUpdateLaporan(event) {
+            event.preventDefault();
+            alert('Laporan rentang tanggal berhasil diperbarui!');
+        }
+    </script>
+</body>
+</html>

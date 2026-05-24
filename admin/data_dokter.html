@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dokter & Jadwal - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/data_dokter.css">
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="doctor-page-header">
+                <div class="header-left"></div>
+                <div class="header-right">
+                    <div class="action-controls-wrapper">
+                        <div class="filter-select-box">
+                            <span class="filter-icon">⏳</span>
+                            <select class="select-filter-layanan">
+                                <option value="">Semua Layanan</option>
+                                <option value="Umum">Umum</option>
+                                <option value="Khitan">Khitan</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn-tambah-dokter-baru" onclick="bukaModalTambahDokter()">
+                            + Tambah Dokter Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <main class="table-section-card">
+                <div class="table-responsive">
+                    <table id="tabelDokterJadwal">
+                        <thead>
+                            <tr>
+                                <th>Dokter</th>
+                                <th>Layanan</th>
+                                <th>Jadwal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="doctor-profile-cell">
+                                        <img src="../assets/images/dokter 1.png" alt="Avatar Dr. Usman">
+                                        <div class="doc-text">
+                                            <strong>Dr. Usman Ali</strong>
+                                            <p>STR: 3172012345678</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Umum</td>
+                                <td>
+                                    <div class="schedule-tags-container">
+                                        <span class="tag-schedule">Sen: 7 - 12</span>
+                                        <span class="tag-schedule">Sen: 15 - 20</span>
+                                        <span class="tag-schedule">Sel: 15 - 20</span>
+                                        <span class="tag-schedule">Kam: 7 - 12</span>
+                                        <span class="tag-schedule">Kam: 15 - 20</span>
+                                        <span class="tag-schedule">Jum: 7 - 12</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="btn-edit-jadwal">Edit Jadwal</button>
+                                    <button class="view-btn">👁</button>
+                                    <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doctor-profile-cell">
+                                        <img src="../assets/images/dokter 2.png" alt="Avatar Dr. Difa">
+                                        <div class="doc-text">
+                                            <strong>Dr. Difa Hussaina</strong>
+                                            <p>STR: 3172087654321</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Umum</td>
+                                <td>
+                                    <div class="schedule-tags-container">
+                                        <span class="tag-schedule">Sen: 15 - 20</span>
+                                        <span class="tag-schedule">Kam: 7 - 12</span>
+                                        <span class="tag-schedule">Jum: 7 - 12</span>
+                                        <span class="tag-schedule">Jum: 15 - 20</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="btn-edit-jadwal">Edit Jadwal</button>
+                                    <button class="view-btn">👁</button>
+                                    <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doctor-profile-cell">
+                                        <img src="../assets/images/dokter 3.png" alt="Avatar Dr. Bayu">
+                                        <div class="doc-text">
+                                            <strong>Dr. Bayu Andi</strong>
+                                            <p>STR: 3172043219876</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Umum</td>
+                                <td>
+                                    <div class="schedule-tags-container">
+                                        <span class="tag-schedule">Sen: 7 - 12</span>
+                                        <span class="tag-schedule">Sel: 7 - 12</span>
+                                        <span class="tag-schedule">Sel: 15 - 20</span>
+                                        <span class="tag-schedule">Rab: 15 - 20</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="btn-edit-jadwal">Edit Jadwal</button>
+                                    <button class="view-btn">👁</button>
+                                    <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doctor-profile-cell">
+                                        <img src="../assets/images/dokter 1.png" alt="Avatar Dr. Sutjipto">
+                                        <div class="doc-text">
+                                            <strong>Dr. Sutjipto Utomo</strong>
+                                            <p>STR: 3172056781234</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Umum</td>
+                                <td>
+                                    <div class="schedule-tags-container">
+                                        <span class="tag-schedule">Sel: 7 - 12</span>
+                                        <span class="tag-schedule">Rab: 7 - 12</span>
+                                        <span class="tag-schedule">Rab: 15 - 20</span>
+                                        <span class="tag-schedule">Kam: 15 - 20</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="btn-edit-jadwal">Edit Jadwal</button>
+                                    <button class="view-btn">👁</button>
+                                    <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="modalTambahDokter" class="modal-overlay">
+        <div class="modal-content-box vertical-modal-layout width-tambah-dokter">
+            <h3 class="form-pop-title">Tambah Dokter Baru</h3>
+            
+            <form onsubmit="submitDokterForm(event)" class="pop-form-container">
+                <div class="upload-photo-row">
+                    <div class="image-icon-trigger">🖼️</div>
+                    <input type="text" class="upload-text-box" placeholder="Foto maksimal 50 Mb" readonly>
+                </div>
+
+                <div class="pop-form-grid-two">
+                    <div class="pop-form-field">
+                        <label>Nama Dokter <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan nama dokter" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>STR Dokter <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan STR Dokter" required>
+                    </div>
+                </div>
+
+                <div class="pop-form-field full-width-field">
+                    <label>Pilih Layanan <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select required>
+                            <option value="">Pilih Layanan</option>
+                            <option value="Umum">Umum</option>
+                            <option value="Khitan">Khitan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pop-form-field full-width-field">
+                    <label>Pilih Jadwal <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select required>
+                            <option value="">Pilih Jadwal</option>
+                            <option value="Jadwal 1">Senin (07.00 - 12.00)</option>
+                            <option value="Jadwal 2">Selasa (15.00 - 20.00)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pop-form-field full-width-field">
+                    <label>Status <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select required>
+                            <option value="">Pilih Status</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pop-form-actions-row">
+                    <button type="button" class="btn-action-back" onclick="tutupModalDokter()">Kembali</button>
+                    <button type="submit" class="btn-action-save">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        function bukaModalTambahDokter() {
+            document.getElementById('modalTambahDokter').classList.add('open');
+        }
+
+        function tutupModalDokter() {
+            document.getElementById('modalTambahDokter').classList.remove('open');
+        }
+
+        function submitDokterForm(event) {
+            event.preventDefault();
+            alert('Data Dokter Berhasil Disimpan!');
+            tutupModalDokter();
+        }
+    </script>
+</body>
+</html>

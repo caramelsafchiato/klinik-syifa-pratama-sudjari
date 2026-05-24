@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Pasien Baru - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/pendaftaran_kasir.css">
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="pendaftaran-kasir-grid">
+                
+                <section class="panel-antrian-pembayaran">
+                    <h3>Antrian Pembayaran</h3>
+                    <div class="search-pasien-box">
+                        <input type="text" id="searchAntrian" placeholder="Cari Pasien">
+                    </div>
+
+                    <div class="list-kartu-antrian" id="listAntrianKasir"></div>
+                </section>
+
+                <section class="panel-konten-dinamis">
+                    <div class="sub-view-panel active">
+                        <div class="view-header-box">
+                            <h2>Pendaftaran Pasien Baru</h2>
+                        </div>
+                        
+                        <form id="formDaftarPasienBaru" onsubmit="handleRegistrasiPasien(event)">
+                            <div class="form-row-three">
+                                <div class="form-group-field">
+                                    <label>Layanan <span class="required">*</span></label>
+                                    <select id="reg-layanan" required>
+                                        <option value="">Pilih Layanan</option>
+                                        <option value="Dokter Umum">Dokter Umum</option>
+                                        <option value="Layanan Khitan">Layanan Khitan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label>Dokter <span class="required">*</span></label>
+                                    <select id="reg-dokter" required>
+                                        <option value="">Pilih Dokter</option>
+                                        <option value="Dr. Usman Ali">Dr. Usman Ali</option>
+                                        <option value="Dr. Bayu Andi">Dr. Bayu Andi</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label>Jam <span class="required">*</span></label>
+                                    <select id="reg-jam" required>
+                                        <option value="">Pilih Jam</option>
+                                        <option value="07.00 - 12.00">07.00 - 12.00</option>
+                                        <option value="18.00 - 21.00">18.00 - 21.00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row-two">
+                                <div class="form-group-field">
+                                    <label>Nama Lengkap <span class="required">*</span></label>
+                                    <input type="text" id="reg-nama" placeholder="Masukkan nama lengkap" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label>NIK <span class="required">*</span></label>
+                                    <input type="text" id="reg-nik" placeholder="Masukkan NIK" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row-two">
+                                <div class="form-group-field">
+                                    <label>Tanggal Lahir <span class="required">*</span></label>
+                                    <input type="date" id="reg-tgl-lahir" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label>Jenis Kelamin <span class="required">*</span></label>
+                                    <select id="reg-gender" required>
+                                        <option value="">Pilih Jenis Kelamin</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row-two">
+                                <div class="form-group-field">
+                                    <label>No. Telepon <span class="required">*</span></label>
+                                    <input type="tel" id="reg-telp" placeholder="Masukkan no. telepon" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label>Email</label>
+                                    <input type="email" id="reg-email" placeholder="Masukkan Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group-field full-width">
+                                <label>Alamat <span class="required">*</span></label>
+                                <textarea id="reg-alamat" placeholder="Masukkan alamat" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-group-field full-width">
+                                <label>Keluhan <span class="required">*</span></label>
+                                <textarea id="reg-keluhan" placeholder="Masukkan keluhan" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-action-buttons">
+                                <button type="button" class="btn-secondary-outline" onclick="resetFormPendaftaran()">Kembali</button>
+                                <button type="submit" class="btn-primary-blue">Daftar</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <div class="bottom-navigation-bar-action">
+                <a href="data_pasien.html" class="btn-redirect-all-patients">Lihat Semua Data Pasien ──➔</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        const pasienDefaultKasir = [
+            {
+                noAntrian: 'KSK - 2025 - P001',
+                nama: 'Browi Nugroho',
+                layanan: 'Dokter Umum',
+                dokter: 'Dr. Usman Ali',
+                jam: '07.00 - 12.00',
+                status: 'Menunggu Pembayaran'
+            },
+            {
+                noAntrian: 'KSK - 2025 - P002',
+                nama: 'Valerina Dzakiyya',
+                layanan: 'Layanan Khitan',
+                dokter: 'Dr. Bayu Andi',
+                jam: '18.00 - 21.00',
+                status: 'Menunggu Pembayaran'
+            }
+        ];
+
+        function getDaftarPasienKasir() {
+            const dataTersimpan = JSON.parse(localStorage.getItem('databasePasien')) || [];
+            const daftarGabungan = [...dataTersimpan, ...pasienDefaultKasir];
+            const unik = new Map();
+
+            daftarGabungan.forEach((pasien, index) => {
+                const kunci = pasien.noAntrian || `${pasien.nama}-${index}`;
+                if (!unik.has(kunci)) {
+                    unik.set(kunci, {
+                        status: 'Menunggu Pembayaran',
+                        ...pasien
+                    });
+                }
+            });
+
+            return Array.from(unik.values());
+        }
+
+        function buatUrlKasirPasien(pasien) {
+            const params = new URLSearchParams({
+                nama: pasien.nama || '',
+                id: pasien.noAntrian || '',
+                layanan: pasien.layanan || '',
+                dokter: pasien.dokter || '',
+                jam: pasien.jam || '',
+                gender: pasien.gender || '',
+                status: pasien.status || 'Menunggu Pembayaran'
+            });
+
+            return `kasir_pembayaran.html?${params.toString()}`;
+        }
+
+        function renderAntrianKasir(filter = '') {
+            const daftarContainer = document.getElementById('listAntrianKasir');
+            if (!daftarContainer) return;
+
+            const kataKunci = filter.trim().toLowerCase();
+            const daftarPasien = getDaftarPasienKasir().filter(pasien => {
+                if (!kataKunci) return true;
+
+                return [pasien.nama, pasien.noAntrian, pasien.dokter, pasien.layanan]
+                    .filter(Boolean)
+                    .some(nilai => nilai.toLowerCase().includes(kataKunci));
+            });
+
+            daftarContainer.innerHTML = daftarPasien.map(pasien => {
+                const statusClass = String(pasien.status || '').toLowerCase().includes('selesai') ? 'success' : 'pending';
+
+                return `
+                <div class="card-pasien-antrian" onclick="location.href='${buatUrlKasirPasien(pasien)}'" style="cursor: pointer;">
+                    <div class="card-click-area">
+                        <h4>${pasien.nama || '-'}</h4>
+                        <p>${pasien.noAntrian || '-'}</p>
+                        <span class="badge-status-pembayaran ${statusClass}">${pasien.status || 'Menunggu Pembayaran'}</span>
+                    </div>
+                    <span class="arrow-indicator">&gt;</span>
+                </div>
+            `;
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderAntrianKasir();
+
+            const searchInput = document.getElementById('searchAntrian');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    renderAntrianKasir(this.value);
+                });
+            }
+        });
+
+        // LOGIKA PENDAFTARAN PASIEN BARU & OPER KE DATA_PASIEN.HTML
+        function handleRegistrasiPasien(event) {
+            event.preventDefault();
+
+            // 1. Ambil seluruh data isian input form
+            const pasienBaru = {
+                noAntrian: `KSK-2026-P00${Math.floor(Math.random() * 90) + 10}`, // Generate No Antrian acak tahun 2026
+                nama: document.getElementById('reg-nama').value,
+                nik: document.getElementById('reg-nik').value,
+                layanan: document.getElementById('reg-layanan').value,
+                dokter: document.getElementById('reg-dokter').value,
+                jam: document.getElementById('reg-jam').value,
+                gender: document.getElementById('reg-gender').value,
+                tglLahir: document.getElementById('reg-tgl-lahir').value,
+                telp: document.getElementById('reg-telp').value,
+                email: document.getElementById('reg-email').value,
+                alamat: document.getElementById('reg-alamat').value,
+                keluhan: document.getElementById('reg-keluhan').value,
+                status: 'Menunggu Pembayaran'
+            };
+
+            // 2. Ambil data array pasien lama di localStorage jika ada, kalau tidak buat array baru []
+            let daftarPasien = JSON.parse(localStorage.getItem('databasePasien')) || [];
+
+            // 3. Masukkan data pasien baru ke dalam array
+            daftarPasien.push(pasienBaru);
+
+            // 4. Simpan kembali array yang sudah diperbarui ke localStorage browser
+            localStorage.setItem('databasePasien', JSON.stringify(daftarPasien));
+
+            renderAntrianKasir(document.getElementById('searchAntrian')?.value || '');
+
+            alert(`Pendaftaran Berhasil!\nPasien atas nama "${pasienBaru.nama}" berhasil tersimpan ke sistem.`);
+            
+            // 5. Alihkan link secara otomatis langsung ke halaman Manajemen Data Pasien
+            window.location.href = 'data_pasien.html';
+        }
+
+        function resetFormPendaftaran() {
+            document.getElementById('formDaftarPasienBaru').reset();
+        }
+    </script>
+</body>
+</html>

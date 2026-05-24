@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekam Medis - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/pendaftaran_kasir.css">
+    <style>
+        .rekam-medis-summary {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .rekam-item {
+            background: #f7f9fc;
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .rekam-item span {
+            display: block;
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .rekam-item strong {
+            display: block;
+            font-size: 15px;
+            color: #1f2937;
+        }
+
+        .rekam-note-box {
+            margin-top: 18px;
+        }
+
+        .rekam-note-box h4 {
+            margin-bottom: 10px;
+        }
+
+        .rekam-actions-row {
+            margin-top: 18px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="pendaftaran-kasir-grid">
+                <section class="panel-antrian-pembayaran">
+                    <h3>Antrian Pembayaran</h3>
+                    <div class="search-pasien-box">
+                        <input type="text" id="searchAntrian" placeholder="Cari Pasien">
+                    </div>
+
+                    <div class="list-kartu-antrian" id="listAntrianKasir"></div>
+                </section>
+
+                <section class="panel-konten-dinamis">
+                    <div class="sub-view-panel active">
+                        <div class="meta-pasien-top-bar">
+                            <div class="meta-item">Nama: <strong id="text-nama-pasien">-</strong></div>
+                            <div class="meta-item">Dokter: <strong id="text-dokter-pasien">-</strong></div>
+                            <div class="meta-item">Layanan: <strong id="text-layanan-pasien">-</strong></div>
+                            <div class="meta-item">Jam: <strong id="text-jam-pasien">-</strong></div>
+                            <button class="btn-rekam-medis-trigger" id="btnKembaliKasir">← Kembali ke Kasir</button>
+                        </div>
+
+                        <div class="kasir-white-container-card">
+                            <h3>Rekam Medis Pasien</h3>
+
+                            <div class="rekam-medis-summary">
+                                <div class="rekam-item">
+                                    <span>No. Antrian</span>
+                                    <strong id="rekam-id-pasien">-</strong>
+                                </div>
+                                <div class="rekam-item">
+                                    <span>NIK</span>
+                                    <strong id="rekam-nik-pasien">-</strong>
+                                </div>
+                                <div class="rekam-item">
+                                    <span>Jenis Kelamin</span>
+                                    <strong id="rekam-gender-pasien">-</strong>
+                                </div>
+                                <div class="rekam-item">
+                                    <span>Status Pembayaran</span>
+                                    <strong id="rekam-status-pasien">-</strong>
+                                </div>
+                            </div>
+
+                            <div class="rekam-note-box">
+                                <h4>Keluhan Awal</h4>
+                                <p id="rekam-keluhan-pasien">-</p>
+                            </div>
+
+                            <div class="rekam-note-box">
+                                <h4>Ringkasan Pemeriksaan</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Bagian</th>
+                                            <th>Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Dokter Pemeriksa</td>
+                                            <td id="rekam-ringkasan-dokter">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Layanan</td>
+                                            <td id="rekam-ringkasan-layanan">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jam Layanan</td>
+                                            <td id="rekam-ringkasan-jam">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Catatan</td>
+                                            <td>Rekam medis ditampilkan sesuai pasien yang sedang membayar.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="rekam-actions-row">
+                                <button type="button" class="btn-grey-draft" onclick="location.href='pendaftaran_kasir.html'">Kembali ke Antrian</button>
+                                <button type="button" class="btn-primary-blue large-btn" id="btnLihatPembayaran">Lihat Pembayaran</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        const pasienDefaultKasir = [
+            {
+                noAntrian: 'KSK - 2025 - P001',
+                nama: 'Browi Nugroho',
+                layanan: 'Dokter Umum',
+                dokter: 'Dr. Usman Ali',
+                jam: '07.00 - 12.00',
+                gender: 'Laki-laki',
+                nik: '-',
+                keluhan: '-',
+                status: 'Menunggu Pembayaran'
+            },
+            {
+                noAntrian: 'KSK - 2025 - P002',
+                nama: 'Valerina Dzakiyya',
+                layanan: 'Layanan Khitan',
+                dokter: 'Dr. Bayu Andi',
+                jam: '18.00 - 21.00',
+                gender: 'Perempuan',
+                nik: '-',
+                keluhan: '-',
+                status: 'Menunggu Pembayaran'
+            }
+        ];
+
+        function getDaftarPasienKasir() {
+            const dataTersimpan = JSON.parse(localStorage.getItem('databasePasien')) || [];
+            const daftarGabungan = [...dataTersimpan, ...pasienDefaultKasir];
+            const unik = new Map();
+
+            daftarGabungan.forEach((pasien, index) => {
+                const kunci = pasien.noAntrian || `${pasien.nama}-${index}`;
+                if (!unik.has(kunci)) {
+                    unik.set(kunci, {
+                        status: 'Menunggu Pembayaran',
+                        ...pasien
+                    });
+                }
+            });
+
+            return Array.from(unik.values());
+        }
+
+        function buildKasirUrl(pasien) {
+            const params = new URLSearchParams({
+                nama: pasien.nama || '',
+                id: pasien.noAntrian || '',
+                layanan: pasien.layanan || '',
+                dokter: pasien.dokter || '',
+                jam: pasien.jam || '',
+                gender: pasien.gender || ''
+            });
+
+            return `kasir_pembayaran.html?${params.toString()}`;
+        }
+
+        function getSelectedPasien() {
+            const params = new URLSearchParams(window.location.search);
+            const nama = params.get('nama') || '';
+            const id = params.get('id') || '';
+            const layanan = params.get('layanan') || '';
+            const dokter = params.get('dokter') || '';
+            const jam = params.get('jam') || '';
+            const gender = params.get('gender') || '';
+            const daftarPasien = getDaftarPasienKasir();
+            const pasienCocok = daftarPasien.find(pasien => {
+                return (id && pasien.noAntrian === id) || (nama && pasien.nama === nama);
+            }) || daftarPasien[0] || {};
+
+            return {
+                ...pasienCocok,
+                nama: nama || pasienCocok.nama || 'Browi Nugroho',
+                noAntrian: id || pasienCocok.noAntrian || 'KSK - 2025 - P001',
+                layanan: layanan || pasienCocok.layanan || 'Dokter Umum',
+                dokter: dokter || pasienCocok.dokter || 'Dr. Usman Ali',
+                jam: jam || pasienCocok.jam || '07.00 - 12.00',
+                gender: gender || pasienCocok.gender || '-',
+                nik: pasienCocok.nik || '-',
+                keluhan: pasienCocok.keluhan || '-',
+                status: pasienCocok.status || 'Menunggu Pembayaran'
+            };
+        }
+
+        function renderAntrianKasir(filter = '') {
+            const daftarContainer = document.getElementById('listAntrianKasir');
+            if (!daftarContainer) return;
+
+            const selectedPasien = getSelectedPasien();
+            const kataKunci = filter.trim().toLowerCase();
+            const daftarPasien = getDaftarPasienKasir().filter(pasien => {
+                if (!kataKunci) return true;
+
+                return [pasien.nama, pasien.noAntrian, pasien.dokter, pasien.layanan]
+                    .filter(Boolean)
+                    .some(nilai => nilai.toLowerCase().includes(kataKunci));
+            });
+
+            daftarContainer.innerHTML = daftarPasien.map(pasien => {
+                const isActive = selectedPasien.noAntrian === pasien.noAntrian || selectedPasien.nama === pasien.nama;
+                const cardClass = isActive ? 'card-pasien-antrian active-trigger' : 'card-pasien-antrian';
+                const statusClass = String(pasien.status || '').toLowerCase().includes('selesai') ? 'success' : 'pending';
+
+                return `
+                    <div class="${cardClass}" onclick="location.href='${buildKasirUrl(pasien)}'" style="cursor: pointer;">
+                        <div class="card-click-area">
+                            <h4>${pasien.nama || '-'}</h4>
+                            <p>${pasien.noAntrian || '-'}</p>
+                            <span class="badge-status-pembayaran ${statusClass}">${pasien.status || 'Menunggu Pembayaran'}</span>
+                        </div>
+                        <span class="arrow-indicator">&gt;</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function syncSelectedPasienToView() {
+            const pasien = getSelectedPasien();
+
+            const mapping = {
+                'text-nama-pasien': pasien.nama,
+                'text-dokter-pasien': pasien.dokter,
+                'text-layanan-pasien': pasien.layanan,
+                'text-jam-pasien': pasien.jam,
+                'rekam-id-pasien': pasien.noAntrian,
+                'rekam-nik-pasien': pasien.nik,
+                'rekam-gender-pasien': pasien.gender,
+                'rekam-status-pasien': pasien.status,
+                'rekam-keluhan-pasien': pasien.keluhan,
+                'rekam-ringkasan-dokter': pasien.dokter,
+                'rekam-ringkasan-layanan': pasien.layanan,
+                'rekam-ringkasan-jam': pasien.jam
+            };
+
+            Object.entries(mapping).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = value || '-';
+                }
+            });
+
+            const btnKembaliKasir = document.getElementById('btnKembaliKasir');
+            if (btnKembaliKasir) {
+                btnKembaliKasir.onclick = function() {
+                    const params = new URLSearchParams({
+                        nama: pasien.nama || '',
+                        id: pasien.noAntrian || '',
+                        layanan: pasien.layanan || '',
+                        dokter: pasien.dokter || '',
+                        jam: pasien.jam || '',
+                        gender: pasien.gender || ''
+                    });
+
+                    window.location.href = `kasir_pembayaran.html?${params.toString()}`;
+                };
+            }
+
+            const btnLihatPembayaran = document.getElementById('btnLihatPembayaran');
+            if (btnLihatPembayaran) {
+                btnLihatPembayaran.onclick = function() {
+                    const params = new URLSearchParams({
+                        nama: pasien.nama || '',
+                        id: pasien.noAntrian || '',
+                        layanan: pasien.layanan || '',
+                        dokter: pasien.dokter || '',
+                        jam: pasien.jam || '',
+                        gender: pasien.gender || ''
+                    });
+
+                    window.location.href = `kasir_pembayaran.html?${params.toString()}`;
+                };
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            syncSelectedPasienToView();
+            renderAntrianKasir();
+
+            const searchInput = document.getElementById('searchAntrian');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    renderAntrianKasir(this.value);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

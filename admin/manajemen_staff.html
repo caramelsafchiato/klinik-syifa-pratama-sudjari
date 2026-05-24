@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Staff - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/manajemen_staff.css">
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="staff-page-wrapper">
+                
+                <div class="staff-action-bar">
+                    <button class="btn-blue-primary" onclick="bukaModalStaff()">+ Tambah User Baru</button>
+                </div>
+
+                <main class="table-section-card">
+                    <div class="table-responsive">
+                        <table id="tabelManajemenStaff">
+                            <thead>
+                                <tr>
+                                    <th>Nama User</th>
+                                    <th>Username (Email)</th>
+                                    <th>Role</th>
+                                    <th>Status Akun</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rani Lestari</td>
+                                    <td>raniiiiless@mail.com</td>
+                                    <td>Admin</td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="staff-actions-cell">
+                                        <button class="btn-staff-edit" onclick="alert('Edit data Rani Lestari')">📝 Edit</button>
+                                        <button class="btn-staff-reset" onclick="alert('Link reset password berhasil dikirim ke email Rani!')">🔑 Reset Password</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Bayu Andi</td>
+                                    <td>bayuuuuundi@mail.com</td>
+                                    <td>Dokter</td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="staff-actions-cell">
+                                        <button class="btn-staff-edit" onclick="alert('Edit data Bayu Andi')">📝 Edit</button>
+                                        <button class="btn-staff-reset" onclick="alert('Link reset password berhasil dikirim ke email Bayu!')">🔑 Reset Password</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nurtjahjo Sudjari</td>
+                                    <td>anoenxxx@mail.com</td>
+                                    <td>Pemilik</td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="staff-actions-cell">
+                                        <button class="btn-staff-edit" onclick="alert('Edit data Nurtjahjo Sudjari')">📝 Edit</button>
+                                        <button class="btn-staff-reset" onclick="alert('Link reset password berhasil dikirim ke email Nurtjahjo!')">🔑 Reset Password</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alisya Aninda Safwa</td>
+                                    <td>whoosafff@mail.com</td>
+                                    <td>Admin</td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox">
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="staff-actions-cell">
+                                        <button class="btn-staff-edit" onclick="alert('Edit data Alisya Aninda Safwa')">📝 Edit</button>
+                                        <button class="btn-staff-reset" onclick="alert('Link reset password berhasil dikirim ke email Alisya!')">🔑 Reset Password</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalTambahStaff" class="modal-overlay">
+        <div class="modal-content-box width-modal-staff">
+            <h3 class="form-pop-title">Formulir Tambah User Baru</h3>
+            
+            <form onsubmit="event.preventDefault(); alert('User baru berhasil didaftarkan ke sistem klinik!'); tutupModalStaff();">
+                <div class="pop-form-grid-two">
+                    <div class="pop-form-field">
+                        <label>Nama User <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan nama user" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Pilih Role <span class="required">*</span></label>
+                        <div class="select-wrapper">
+                            <select required>
+                                <option value="">Pilih Role</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Dokter">Dokter</option>
+                                <option value="Pemilik">Pemilik</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pop-form-grid-two">
+                    <div class="pop-form-field">
+                        <label>Username (Email) <span class="required">*</span></label>
+                        <input type="email" placeholder="Masukkan username (email)" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Status <span class="required">*</span></label>
+                        <div class="select-wrapper">
+                            <select required>
+                                <option value="">Pilih Status</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pop-form-actions-row">
+                    <button type="button" class="btn-action-back" onclick="tutupModalStaff()">Kembali</button>
+                    <button type="submit" class="btn-action-save">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        function bukaModalStaff() {
+            document.getElementById('modalTambahStaff').classList.add('open');
+        }
+
+        function tutupModalStaff() {
+            document.getElementById('modalTambahStaff').classList.remove('open');
+        }
+    </script>
+</body>
+</html>

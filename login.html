@@ -24,7 +24,9 @@
                     <h1 class="sim-title">Sistem Informasi Manajemen<br>Klinik Syifa Medika</h1>
                     <p class="sim-subtitle">Silakan login untuk masuk ke dashboard</p>
 
-                    <form id="formLoginUtama" action="#" method="POST">
+                    <form id="formLoginUtama" onsubmit="handleLogin(event)">
+                        
+                        <div id="error-message" style="text-align: center; font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; min-height: 20px;"></div>
                         
                         <div class="login-field-group">
                             <label for="username">Username</label>
@@ -65,5 +67,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="js/component-loader.js"></script>
+    
+    <script src="js/auth.js"></script>
 </body>
 </html>

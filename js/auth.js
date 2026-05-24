@@ -1,8 +1,8 @@
 // 1. DATA AKUN STAFF (SIMULASI)
 const dummyUsers = [
-    { username: 'admin123', password: '123', role: 'admin' },
-    { username: 'dokter123', password: '123', role: 'dokter' },
-    { username: 'pemilik123', password: '123', role: 'pemilik' }
+    { username: 'admin@gmail.com', password: 'admin', role: 'admin' },
+    { username: 'dokter@gmail.com', password: 'dokter', role: 'dokter' },
+    { username: 'pemilik@gmail.com', password: 'pemilik', role: 'pemilik' }
 ];
 
 // 2. LOGIKA VALIDASI LOGIN
@@ -24,7 +24,7 @@ function handleLogin(event) {
         localStorage.setItem('isLoggedIn', 'true');
 
         // Alihkan otomatis ke halaman dashboard
-        window.location.href = 'dashboard.html'; 
+        window.location.href = 'admin/dashboard.html'; 
     } else {
         // Tampilkan pesan error jika salah
         errorMessage.innerText = "Username atau password salah!";

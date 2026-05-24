@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pasien - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/data_pasien.css">
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="top-action-bar">
+                <button class="btn-filter">⏳ Filter</button>
+                <button class="btn-export">📥 Export Excel/PDF</button>
+                <button class="btn-blue-primary" onclick="bukaModalTambahPasien()">+ Tambah Pasien Baru</button>
+            </div>
+
+            <main class="table-section-card">
+                <div class="table-responsive">
+                    <table id="tabelMasterPasien">
+                        <thead>
+                            <tr>
+                                <th>NIK</th>
+                                <th>Nama Lengkap</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Alamat</th>
+                                <th>No. Telepon</th>
+                                <th>Tambah ke Antrian Hari Ini</th>
+                                <th>Rekam Medis</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>327327...</td>
+                                <td><strong>Browi Nugroho</strong></td>
+                                <td>Laki - Laki</td>
+                                <td>Makassar</td>
+                                <td>08128305xxxx</td>
+                                <td><button class="btn-table-outline" onclick="alert('Browi berhasil dimasukkan ke Antrian Hari ini!')">Tambahkan</button></td>
+                                <td><button class="btn-table-medis" onclick="bukaModalRekamMedis('Browi Nugroho', '25 Tahun', 'Laki - Laki')">📄 Lihat Rekam Medis</button></td>
+                                <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                            </tr>
+                            <tr>
+                                <td>318345...</td>
+                                <td><strong>Valerina Dzakiyya</strong></td>
+                                <td>Perempuan</td>
+                                <td>Surabaya</td>
+                                <td>08119875xxxx</td>
+                                <td><button class="btn-table-outline" onclick="alert('Valerina berhasil dimasukkan ke Antrian Hari ini!')">Tambahkan</button></td>
+                                <td><button class="btn-table-medis" onclick="bukaModalRekamMedis('Valerina Dzakiyya', '22 Tahun', 'Perempuan')">📄 Lihat Rekam Medis</button></td>
+                                <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                            </tr>
+                            <tr>
+                                <td>358367...</td>
+                                <td><strong>Lailia Trihapsari</strong></td>
+                                <td>Perempuan</td>
+                                <td>Jombang</td>
+                                <td>08583476xxxx</td>
+                                <td><button class="btn-table-outline" onclick="alert('Lailia berhasil dimasukkan ke Antrian Hari ini!')">Tambahkan</button></td>
+                                <td><button class="btn-table-medis" onclick="bukaModalRekamMedis('Lailia Trihapsari', '23 Tahun', 'Perempuan')">📄 Lihat Rekam Medis</button></td>
+                                <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                            </tr>
+                            <tr>
+                                <td>392386...</td>
+                                <td><strong>Andhika Muhammad</strong></td>
+                                <td>Laki - Laki</td>
+                                <td>Sidoarjo</td>
+                                <td>08884622xxxx</td>
+                                <td><button class="btn-table-outline" onclick="alert('Andhika berhasil dimasukkan ke Antrian Hari ini!')">Tambahkan</button></td>
+                                <td><button class="btn-table-medis" onclick="bukaModalRekamMedis('Andhika Muhammad', '24 Tahun', 'Laki - Laki')">📄 Lihat Rekam Medis</button></td>
+                                <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                            </tr>
+                            <tr>
+                                <td>392387...</td>
+                                <td><strong>Marsha Adhia</strong></td>
+                                <td>Perempuan</td>
+                                <td>Sidoarjo</td>
+                                <td>08584332xxxx</td>
+                                <td><button class="btn-table-outline" onclick="alert('Marsha berhasil dimasukkan ke Antrian Hari ini!')">Tambahkan</button></td>
+                                <td><button class="btn-table-medis" onclick="bukaModalRekamMedis('Marsha Adhia', '21 Tahun', 'Perempuan')">📄 Lihat Rekam Medis</button></td>
+                                <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="modalRekamMedis" class="modal-overlay">
+        <div class="modal-content-box width-rekam-medis">
+            <div class="meta-medis-header">
+                <span>Nama: <strong id="pop-med-nama">Nama Pasien</strong></span>
+                <span>Umur: <strong id="pop-med-umur">25 Tahun</strong></span>
+                <span>Jenis Kelamin: <strong id="pop-med-gender">Laki-laki</strong></span>
+                <div class="badge-alergies">Alergi: PENICILIN</div>
+            </div>
+
+            <div class="med-split-grid">
+                <div>
+                    <div class="med-box-group">
+                        <h5>Keluhan Utama (Anamnesa)</h5>
+                        <div class="med-text-value">Demam naik turun dari 3 hari yang lalu, disertai mual dan pusing tetapi tidak batuk dan pilek</div>
+                    </div>
+                    <div class="med-box-group">
+                        <h5>Tanda - tanda Vitals</h5>
+                        <div class="vitals-mini-grid">
+                            <div class="vital-badge-box"><span>Tekanan Darah</span><strong>120/80 mmHg</strong></div>
+                            <div class="vital-badge-box"><span>Suhu</span><strong>38.5 °C</strong></div>
+                            <div class="vital-badge-box"><span>Nadi</span><strong>88 x/menit</strong></div>
+                            <div class="vital-badge-box"><span>RR</span><strong>20 x/menit</strong></div>
+                            <div class="vital-badge-box"><span>Berat Badan</span><strong>78 Kg</strong></div>
+                        </div>
+                    </div>
+                    <div class="med-box-group">
+                        <h5>Diagnosa Dokter</h5>
+                        <div class="med-text-value"><strong>Febris hari ke - 3 (Suspect Typoid), Dyspepsia</strong></div>
+                    </div>
+                    <div class="med-box-group">
+                        <h5>Resep obat & Tindakan</h5>
+                        <div class="med-text-value" style="white-space: pre-line;">R/ Paracetamol 500mg No. X (3x1)
+                        Istirahat cukup dan banyak minum air putih.</div>
+                    </div>
+                    <button class="btn-modal-back-link" onclick="tutupSemuaModal()">&lt; back</button>
+                </div>
+
+                <div>
+                    <h4 style="font-size:0.9rem; color:#334155; margin:0 0 15px 0;">Riwayat Kunjungan Terakhir</h4>
+                    <div class="history-timeline-box">
+                        <div class="history-item active-node">
+                            <h6>10 Oktober 2025</h6>
+                            <p>Dr. Bayu Andi</p>
+                        </div>
+                        <div class="history-item">
+                            <h6>30 Maret 2025</h6>
+                            <p>Dr. Difa Hussaina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalTambahPasien" class="modal-overlay">
+        <div class="modal-content-box width-tambah-pasien">
+            <h3 class="form-pop-title">Formulir Tambah Pasien Baru</h3>
+            
+            <form id="formSimulasiTambah" onsubmit="submitPasienForm(event)">
+                <div class="pop-form-row-two">
+                    <div class="pop-form-field">
+                        <label>Nama Lengkap <span>*</span></label>
+                        <input type="text" id="add-nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>NIK <span>*</span></label>
+                        <input type="text" id="add-nik" placeholder="Masukkan NIK" required>
+                    </div>
+                </div>
+
+                <div class="pop-form-row-two">
+                    <div class="pop-form-field">
+                        <label>Tanggal Lahir <span>*</span></label>
+                        <input type="date" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Jenis Kelamin <span>*</span></label>
+                        <select id="add-gender" required>
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="Laki - Laki">Laki - Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pop-form-row-two">
+                    <div class="pop-form-field">
+                        <label>No. Telepon <span>*</span></label>
+                        <input type="tel" id="add-telp" placeholder="Masukkan no. telepon" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Email</label>
+                        <input type="email" placeholder="Masukkan Email">
+                    </div>
+                </div>
+
+                <div class="pop-form-field" style="margin-bottom:16px;">
+                    <label>Alamat <span>*</span></label>
+                    <textarea id="add-alamat" placeholder="Masukkan alamat" rows="3" required></textarea>
+                </div>
+
+                <div class="pop-form-actions">
+                    <button type="button" class="btn-pop-cancel" onclick="tutupSemuaModal()">Kembali</button>
+                    <button type="submit" class="btn-pop-submit">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        function bukaModalRekamMedis(nama, umur, gender) {
+            document.getElementById('pop-med-nama').innerText = nama;
+            document.getElementById('pop-med-umur').innerText = umur;
+            document.getElementById('pop-med-gender').innerText = gender;
+            document.getElementById('modalRekamMedis').classList.add('open');
+        }
+
+        function bukaModalTambahPasien() {
+            document.getElementById('modalTambahPasien').classList.add('open');
+        }
+
+        function tutupSemuaModal() {
+            document.getElementById('modalRekamMedis').classList.remove('open');
+            document.getElementById('modalTambahPasien').classList.remove('open');
+            document.getElementById('formSimulasiTambah').reset();
+        }
+
+        function submitPasienForm(event) {
+            event.preventDefault();
+            const nama = document.getElementById('add-nama').value;
+            const nik = document.getElementById('add-nik').value;
+            const gender = document.getElementById('add-gender').value;
+            const telp = document.getElementById('add-telp').value;
+            const alamat = document.getElementById('add-alamat').value;
+
+            const tabelBody = document.querySelector("#tabelMasterPasien tbody");
+            const trBaru = document.createElement('tr');
+            
+            trBaru.innerHTML = `
+                <td>${nik.substring(0,6)}...</td>
+                <td><strong>${nama}</strong></td>
+                <td>${gender}</td>
+                <td>${alamat}</td>
+                <td>${telp}</td>
+                <td><button class="btn-table-outline" onclick="alert('${nama} berhasil dimasukkan ke Antrian Hari ini!')">Tambahkan</button></td>
+                <td><button class="btn-table-medis" onclick="bukaModalRekamMedis('${nama}', '24 Tahun', '${gender}')">📄 Lihat Rekam Medis</button></td>
+                <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+            `;
+
+            tabelBody.appendChild(trBaru);
+            alert(`Pasien "${nama}" Berhasil Ditambahkan ke Master Data!`);
+            tutupSemuaModal();
+        }
+    </script>
+</body>
+</html>

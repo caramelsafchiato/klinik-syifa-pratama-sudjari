@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Layanan & Artikel - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/kelola_layanan.css">
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            <header id="admin-header-placeholder"></header>
+
+            <div class="kelola-page-wrapper">
+                
+                <section class="table-section-card kelola-box-card">
+                    <div class="kelola-card-header">
+                        <h3 class="kelola-title">Kelola Artikel</h3>
+                        <button class="btn-blue-solid" onclick="bukaModalArtikel()">+ Tambah Artikel Baru</button>
+                    </div>
+
+                    <div class="artikel-tabs-row">
+                        <button class="tab-item active">Semua</button>
+                        <button class="tab-item">Terbit</button>
+                        <button class="tab-item">Draft</button>
+                        <button class="tab-item">Arsip</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 45%;">Judul & Snippet</th>
+                                    <th>Penulis</th>
+                                    <th>Tanggal</th>
+                                    <th>Status</th>
+                                    <th>Dilihat</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="artikel-profile-cell">
+                                            <img src="../assets/images/artikel 1.jpg" class="img-artikel-thumb" alt="Cover Artikel 1">
+                                            <div class="artikel-text-block">
+                                                <strong>7 Tips Untuk Menjaga Kesehatan Mata</strong>
+                                                <p>Tips menjaga kesehatan mata: nutrisi bergizi, kacamata pelindung, olahraga, hingga periksa rutin ke dokter</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Usman Ali</td>
+                                    <td>29 Agustus 2025</td>
+                                    <td><span class="badge-status-pub terbit">Terbit</span></td>
+                                    <td>👁️ 3.987</td>
+                                    <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="artikel-profile-cell">
+                                            <img src="../assets/images/artikel 2.jpg" class="img-artikel-thumb" alt="Cover Artikel 2">
+                                            <div class="artikel-text-block">
+                                                <strong>Apa itu Olahraga Padel? Simak Manfaatnya bagi Kesehatan</strong>
+                                                <p>Padel adalah olahraga raket yang sering dimainkan oleh dua pasangan (dua lawan dua) di lapangan...</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Sutjipto Utomo</td>
+                                    <td>10 Oktober 2025</td>
+                                    <td><span class="badge-status-pub terbit">Terbit</span></td>
+                                    <td>👁️ 2.396</td>
+                                    <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="artikel-profile-cell">
+                                            <img src="../assets/images/artikel 3.jpg" class="img-artikel-thumb" alt="Cover Artikel 3">
+                                            <div class="artikel-text-block">
+                                                <strong>Pulbagia: Penyebab, Gejala, dan Cara Mencegahnya</strong>
+                                                <p>Cedera pubalgia sering menyebabkan nyeri pada pangkal paha, terutama pada atlet. Kenali gejala, penyebab, dan pencegahannya.</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Bayu Andi</td>
+                                    <td>14 November 2025</td>
+                                    <td><span class="badge-status-pub terbit">Terbit</span></td>
+                                    <td>👁️ 1.356</td>
+                                    <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="artikel-profile-cell">
+                                            <img src="../assets/images/artikel 4.jpg" class="img-artikel-thumb" alt="Cover Artikel 4">
+                                            <div class="artikel-text-block">
+                                                <strong>5 Cara Merawat Ginjal agar Sehat & Cegah Penyakit</strong>
+                                                <p>Kenali cara merawat ginjal agar terhindar dari gejala ginjal bermasalah. Pelajari ciri penyakit ginjal dan pencegahan penyakit ginjal apa saja sejak dini.</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Difa Hussaina</td>
+                                    <td>3 September 2025</td>
+                                    <td><span class="badge-status-pub draft">Draft</span></td>
+                                    <td>👁️ 0</td>
+                                    <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="artikel-profile-cell">
+                                            <img src="../assets/images/artikel 5.jpg" class="img-artikel-thumb" alt="Cover Artikel 5">
+                                            <div class="artikel-text-block">
+                                                <strong>Campak - Penyebab, Gejala, dan Pencegahannya</strong>
+                                                <p>Campak bisa berbahaya bila dibiarkan. Periksa ke dokter sejak gejala awal muncul agar penanganan lebih tepat.</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Bayu Andi</td>
+                                    <td>25 Agustus 2025</td>
+                                    <td><span class="badge-status-pub arsip">Arsip</span></td>
+                                    <td>👁️ 843</td>
+                                    <td class="actions-cell"><button>👁</button> <button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="table-section-card kelola-box-card">
+                    <div class="kelola-card-header">
+                        <h3 class="kelola-title">Kelola Layanan</h3>
+                        <button class="btn-blue-solid" onclick="bukaModalLayanan()">+ Tambah Layanan Baru</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nama Layanan</th>
+                                    <th>Kategori</th>
+                                    <th>Estimasi Waktu</th>
+                                    <th>Tarif</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Konsultasi Dokter Umum</strong></td>
+                                    <td>Umum</td>
+                                    <td>15 Menit</td>
+                                    <td><strong>Rp. 50.000,00</strong></td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="actions-cell"><button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Khitan</strong></td>
+                                    <td>Tindakan</td>
+                                    <td>60 Menit</td>
+                                    <td><strong>Rp. 800.000,00</strong></td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="actions-cell"><button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cek Gula Darah</strong></td>
+                                    <td>Lab</td>
+                                    <td>5 Menit</td>
+                                    <td><strong>Rp. 25.000,00</strong></td>
+                                    <td>
+                                        <label class="switch-toggle">
+                                            <input type="checkbox">
+                                            <span class="slider-round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="actions-cell"><button>✏️</button> <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalTambahArtikel" class="modal-overlay">
+        <div class="modal-content-box width-modal-artikel">
+            <h3 class="form-pop-title">Formulir Tambah Artikel Baru</h3>
+            
+            <form onsubmit="event.preventDefault(); alert('Artikel baru berhasil di-upload!'); tutupSemuaModal();">
+                <div class="upload-photo-row">
+                    <div class="image-icon-trigger">🖼️</div>
+                    <input type="text" class="upload-text-box" placeholder="Foto maksimal 50 Mb" readonly>
+                </div>
+
+                <div class="pop-form-grid-two">
+                    <div class="pop-form-field">
+                        <label>Judul <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan judul artikel" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Nama Penulis <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan nama penulis" required>
+                    </div>
+                </div>
+
+                <div class="pop-form-field">
+                    <label>Snippet <span class="required">*</span></label>
+                    <textarea placeholder="Masukkan snippet" rows="2" required></textarea>
+                </div>
+
+                <div class="pop-form-field">
+                    <label>Isi Artikel <span class="required">*</span></label>
+                    <div class="wysiwyg-editor-container">
+                        <div class="editor-mini-toolbar">
+                            <button type="button"><b>B</b></button>
+                            <button type="button"><i>I</i></button>
+                            <button type="button"><u>U</u></button>
+                            <button type="button">▤</button>
+                            <button type="button">▥</button>
+                            <button type="button">▧</button>
+                        </div>
+                        <textarea placeholder="Masukkan isi artikel" rows="6" required></textarea>
+                    </div>
+                </div>
+
+                <div class="pop-form-actions-row">
+                    <button type="button" class="btn-action-back" onclick="tutupSemuaModal()">Kembali</button>
+                    <button type="button" class="btn-action-draft" onclick="alert('Artikel berhasil disimpan sebagai Draft!')">Draft</button>
+                    <button type="submit" class="btn-action-save">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalTambahLayanan" class="modal-overlay">
+        <div class="modal-content-box width-modal-layanan">
+            <h3 class="form-pop-title">Formulir Tambah Layanan Baru</h3>
+            
+            <form onsubmit="event.preventDefault(); alert('Layanan baru berhasil ditambahkan!'); tutupSemuaModal();">
+                <div class="pop-form-grid-two">
+                    <div class="pop-form-field">
+                        <label>Nama Layanan <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan nama layanan" required>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Pilih Kategori <span class="required">*</span></label>
+                        <div class="select-wrapper">
+                            <select required>
+                                <option value="">Pilih Kategori</option>
+                                <option value="Umum">Umum</option>
+                                <option value="Tindakan">Tindakan</option>
+                                <option value="Lab">Lab</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pop-form-grid-two">
+                    <div class="pop-form-field">
+                        <label>Estimasi Waktu <span class="required">*</span></label>
+                        <div class="unit-input-wrapper">
+                            <input type="number" placeholder="0" required>
+                            <span class="unit-label">Menit</span>
+                        </div>
+                    </div>
+                    <div class="pop-form-field">
+                        <label>Tarif <span class="required">*</span></label>
+                        <input type="text" placeholder="Masukkan tarif" required>
+                    </div>
+                </div>
+
+                <div class="pop-form-field">
+                    <label>Status <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select required>
+                            <option value="">Pilih Status</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pop-form-actions-row">
+                    <button type="button" class="btn-action-back" onclick="tutupSemuaModal()">Kembali</button>
+                    <button type="submit" class="btn-action-save">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        function bukaModalArtikel() {
+            document.getElementById('modalTambahArtikel').classList.add('open');
+        }
+
+        function bukaModalLayanan() {
+            document.getElementById('modalTambahLayanan').classList.add('open');
+        }
+
+        function tutupSemuaModal() {
+            document.getElementById('modalTambahArtikel').classList.remove('open');
+            document.getElementById('modalTambahLayanan').classList.remove('open');
+        }
+    </script>
+</body>
+</html>

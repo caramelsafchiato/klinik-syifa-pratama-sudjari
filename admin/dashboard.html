@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/admin_global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/data_pasien.css"> <style>
+        /* Tambahan style kursor agar dosen tahu elemen tersebut bisa diklik */
+        .stat-card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        .actions-cell button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-layout-grid">
+        
+        <aside id="admin-sidebar-placeholder"></aside>
+
+        <div class="admin-main-content">
+            
+            <header id="admin-header-placeholder"></header>
+
+            <div class="dashboard-widgets-grid">
+                
+                <div class="stat-card" onclick="location.href='data_pasien.html'">
+                    <div class="stat-info">
+                        <p>Total Pasien Hari Ini</p>
+                        <h3>6</h3>
+                    </div>
+                    <div class="stat-icon blue-bg">👤</div>
+                </div>
+
+                <div class="stat-card" onclick="location.href='data_pasien.html'">
+                    <div class="stat-info">
+                        <p>Pasien Menunggu</p>
+                        <h3>3</h3>
+                    </div>
+                    <div class="stat-icon yellow-bg">🕒</div>
+                </div>
+
+                <div class="stat-card" onclick="location.href='data_pasien.html'">
+                    <div class="stat-info">
+                        <p>Selesai Periksa</p>
+                        <h3>1</h3>
+                    </div>
+                    <div class="stat-icon green-bg">✅</div>
+                </div>
+
+                <div class="stat-card" onclick="location.href='data_dokter.html'">
+                    <div class="stat-info">
+                        <p>Dokter Aktif</p>
+                        <h3>2</h3>
+                    </div>
+                    <div class="stat-icon purple-bg">🩺</div>
+                </div>
+
+            </div>
+
+            <div class="dashboard-lower-grid">
+                
+                <section class="table-section-card">
+                    <div class="table-header-area">
+                        <h2>Antrian Pasien Hari Ini</h2>
+                        <input type="text" class="table-search" placeholder="Cari di Antrian">
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No. Antrian</th>
+                                    <th>Nama Pasien</th>
+                                    <th>Layanan/Dokter</th>
+                                    <th>Jam Daftar</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>KSK-2025-P001</td>
+                                    <td><strong>Browi Nugroho</strong></td>
+                                    <td>Umum / Usman Ali</td>
+                                    <td>07.00 - 12.00</td>
+                                    <td><span class="badge badge-success">Selesai</span></td>
+                                    <td class="actions-cell">
+                                        <button onclick="bukaModalMedisDashboard('Browi Nugroho', '25 Tahun', 'Laki - Laki')">👁</button> 
+                                        <button onclick="alert('Membuka form edit untuk Browi Nugroho')">✏️</button> 
+                                        <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>KSK-2025-P002</td>
+                                    <td><strong>Valerina Dzakiyya</strong></td>
+                                    <td>Umum / Bayu</td>
+                                    <td>07.00 - 12.00</td>
+                                    <td><span class="badge badge-success">Selesai</span></td>
+                                    <td class="actions-cell">
+                                        <button onclick="bukaModalMedisDashboard('Valerina Dzakiyya', '22 Tahun', 'Perempuan')">👁</button> 
+                                        <button onclick="alert('Membuka form edit untuk Valerina Dzakiyya')">✏️</button> 
+                                        <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>KSK-2025-P003</td>
+                                    <td><strong>Lailia Trihapsari</strong></td>
+                                    <td>Umum / Bayu</td>
+                                    <td>07.00 - 12.00</td>
+                                    <td><span class="badge badge-progress">Sedang Diperiksa</span></td>
+                                    <td class="actions-cell">
+                                        <button onclick="bukaModalMedisDashboard('Lailia Trihapsari', '23 Tahun', 'Perempuan')">👁</button> 
+                                        <button onclick="alert('Membuka form edit untuk Lailia Trihapsari')">✏️</button> 
+                                        <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>KSK-2025-P004</td>
+                                    <td><strong>Andhika Muhammad</strong></td>
+                                    <td>Umum / Usman Ali</td>
+                                    <td>07.00 - 12.00</td>
+                                    <td><span class="badge badge-progress">Sedang Diperiksa</span></td>
+                                    <td class="actions-cell">
+                                        <button onclick="bukaModalMedisDashboard('Andhika Muhammad', '24 Tahun', 'Laki - Laki')">👁</button> 
+                                        <button onclick="alert('Membuka form edit untuk Andhika Muhammad')">✏️</button> 
+                                        <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>KSK-2025-P005</td>
+                                    <td><strong>Marsha Adhia</strong></td>
+                                    <td>Umum / Usman Ali</td>
+                                    <td>07.00 - 12.00</td>
+                                    <td><span class="badge badge-warning">Menunggu</span></td>
+                                    <td class="actions-cell">
+                                        <button onclick="bukaModalMedisDashboard('Marsha Adhia', '21 Tahun', 'Perempuan')">👁</button> 
+                                        <button onclick="alert('Membuka form edit untuk Marsha Adhia')">✏️</button> 
+                                        <button class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <div class="right-dashboard-sidebar">
+                    
+                    <div class="action-card-box">
+                        <h3>Quick Actions</h3>
+                        <button class="btn-action-blue" onclick="location.href='pendaftaran_kasir.html'">+ DAFTARKAN PASIEN BARU</button>
+                        <button class="btn-action-outline" onclick="location.href='data_pasien.html'">Cari Data Pasien</button>
+                    </div>
+
+                    <div class="doctor-jaga-box">
+                        <h3>Dokter Jaga Hari Ini</h3>
+                        
+                        <div class="doctor-item-row">
+                            <div class="doc-avatar">
+                                <img src="../assets/images/dokter 1.png" alt="Dr. Usman Ali">
+                            </div>
+                            <div class="doc-details">
+                                <h4>Dr. Usman Ali</h4>
+                                <p>Umum</p>
+                                <span>07.00 - 12.00</span>
+                            </div>
+                        </div>
+
+                        <div class="doctor-item-row">
+                            <div class="doc-avatar">
+                                <img src="../assets/images/dokter 3.png" alt="Dr. Bayu Andi">
+                            </div>
+                            <div class="doc-details">
+                                <h4>Dr. Bayu Andi</h4>
+                                <p>Umum</p>
+                                <span>07.00 - 12.00</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modalRekamMedisDashboard" class="modal-overlay">
+        <div class="modal-content-box width-rekam-medis">
+            <div class="meta-medis-header">
+                <span>Nama: <strong id="pop-dash-nama">Nama Pasien</strong></span>
+                <span>Umur: <strong id="pop-dash-umur">25 Tahun</strong></span>
+                <span>Jenis Kelamin: <strong id="pop-dash-gender">Laki-laki</strong></span>
+                <div class="badge-alergies">Alergi: PENICILIN</div>
+            </div>
+
+            <div class="med-split-grid">
+                <div>
+                    <div class="med-box-group">
+                        <h5>Keluhan Utama (Anamnesa)</h5>
+                        <div class="med-text-value">Demam naik turun dari 3 hari yang lalu, disertai mual dan pusing tetapi tidak batuk dan pilek</div>
+                    </div>
+                    <div class="med-box-group">
+                        <h5>Tanda - tanda Vitals</h5>
+                        <div class="vitals-mini-grid">
+                            <div class="vital-badge-box"><span>Tekanan Darah</span><strong>120/80 mmHg</strong></div>
+                            <div class="vital-badge-box"><span>Suhu</span><strong>38.5 °C</strong></div>
+                            <div class="vital-badge-box"><span>Nadi</span><strong>88 x/menit</strong></div>
+                            <div class="vital-badge-box"><span>RR</span><strong>20 x/menit</strong></div>
+                            <div class="vital-badge-box"><span>Berat Badan</span><strong>78 Kg</strong></div>
+                        </div>
+                    </div>
+                    <div class="med-box-group">
+                        <h5>Diagnosa Dokter</h5>
+                        <div class="med-text-value"><strong>Febris hari ke - 3 (Suspect Typoid), Dyspepsia</strong></div>
+                    </div>
+                    <div class="med-box-group">
+                        <h5>Resep obat & Tindakan</h5>
+                        <div class="med-text-value" style="white-space: pre-line;">R/ Paracetamol 500mg No. X (3x1)
+                        Istirahat cukup dan banyak minum air putih.</div>
+                    </div>
+                    <button class="btn-modal-back-link" onclick="tutupModalDashboard()">&lt; back</button>
+                </div>
+
+                <div>
+                    <h4 style="font-size:0.9rem; color:#334155; margin:0 0 15px 0;">Riwayat Kunjungan Terakhir</h4>
+                    <div class="history-timeline-box">
+                        <div class="history-item active-node">
+                            <h6>10 Oktober 2025</h6>
+                            <p>Dr. Bayu Andi</p>
+                        </div>
+                        <div class="history-item">
+                            <h6>30 Maret 2025</h6>
+                            <p>Dr. Difa Hussaina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-component-loader.js"></script>
+    <script>
+        // Fungsi Pop-Up Medis Dinamis di Dashboard
+        function bukaModalMedisDashboard(nama, umur, gender) {
+            document.getElementById('pop-dash-nama').innerText = nama;
+            document.getElementById('pop-dash-umur').innerText = umur;
+            document.getElementById('pop-dash-gender').innerText = gender;
+            document.getElementById('modalRekamMedisDashboard').classList.add('open');
+        }
+
+        function tutupModalDashboard() {
+            document.getElementById('modalRekamMedisDashboard').classList.remove('open');
+        }
+    </script>
+</body>
+</html>
