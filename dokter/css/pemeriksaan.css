@@ -1,0 +1,247 @@
+/* ==========================================================================
+   STYLE HALAMAN PEMERIKSAAN DOKTER (dokter/css/pemeriksaan.css)
+   ========================================================================== */
+
+.pemeriksaan-page-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Kolom kiri lebih sempit, kanan luas */
+    gap: 25px;
+    align-items: start;
+}
+
+/* KARTU DASAR PUTIH */
+.queue-panel-card, .form-panel-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+}
+
+.panel-title {
+    margin: 0 0 20px 0;
+    font-size: 1.15rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+/* ==========================================
+   KOLOM KIRI: DAFTAR ANTRIAN
+   ========================================== */
+.search-queue-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-queue-box input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-queue-box .search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.queue-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.queue-card-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+}
+
+.queue-card-item:hover {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+}
+
+.queue-card-item.active {
+    border-color: #1D60A1;
+    background-color: #f0f7ff; /* Latar biru sangat muda saat dipilih */
+}
+
+.queue-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+    color: #1e293b;
+}
+
+.queue-info p {
+    margin: 0 0 8px 0;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.badge-waiting {
+    display: inline-block;
+    background-color: #ffedd5;
+    color: #ea580c;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.queue-arrow {
+    color: #94a3b8;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* ==========================================
+   KOLOM KANAN: FORMULIR PEMERIKSAAN
+   ========================================== */
+.patient-meta-header {
+    display: flex;
+    gap: 25px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.meta-item strong {
+    color: #0f172a;
+}
+
+.alergi-box {
+    background-color: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.alergi-box strong { color: white; }
+
+/* Struktur Input Formulir */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group label .required { color: #ef4444; }
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: none;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #1D60A1;
+}
+
+/* Custom Wrapper untuk Unit di dalam Input (mmHg, °C, dll) */
+.input-with-unit {
+    position: relative;
+    width: 100%;
+}
+
+.input-with-unit input {
+    padding-right: 65px; /* Memberi ruang agar teks tidak menabrak unit */
+}
+
+.input-with-unit .unit-text {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+/* Tata Letak Grid Formulir */
+.form-grid-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.form-grid-two-centered {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 66%; /* Agar sesuai dengan mockup, kolom RR dan Berat Badan lebih ketengah/terbatas lebarnya */
+    margin: 0 auto 18px auto;
+}
+
+/* Baris Tombol Aksi */
+.form-actions-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-outline-back {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-solid-save {
+    background-color: #1D60A1;
+    border: none;
+    color: #ffffff;
+    padding: 12px 50px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(29, 96, 161, 0.15);
+    transition: background-color 0.2s;
+}
+
+.btn-outline-back:hover { background-color: #f8fafc; }
+.btn-solid-save:hover { background-color: #154675; }

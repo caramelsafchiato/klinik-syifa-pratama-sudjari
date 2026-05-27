@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemeriksaan Pasien - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/dokter_global.css">
+    <link rel="stylesheet" href="css/pemeriksaan.css">
+</head>
+<body>
+
+    <div class="dokter-layout-grid">
+        <aside id="dokter-sidebar-placeholder"></aside>
+
+        <div class="dokter-main-content">
+            <header id="dokter-header-placeholder"></header>
+
+            <div class="pemeriksaan-page-wrapper">
+                
+                <aside class="queue-panel-card">
+                    <h3 class="panel-title">Antrian Pemeriksaan</h3>
+                    <div class="search-queue-box">
+                        <input type="text" placeholder="Cari Pasien">
+                        <span class="search-icon">🔍</span>
+                    </div>
+
+                    <div class="queue-list-container">
+                        <div class="queue-card-item" onclick="pilihPasien('P003', this)">
+                            <div class="queue-info">
+                                <h4>Lailia Trihapsari</h4>
+                                <p>KSK - 2025 -P003</p>
+                                <span class="badge-waiting">Menunggu Antrian</span>
+                            </div>
+                            <div class="queue-arrow">&gt;</div>
+                        </div>
+
+                        <div class="queue-card-item" onclick="pilihPasien('P006', this)">
+                            <div class="queue-info">
+                                <h4>Muhammad Althaf</h4>
+                                <p>KSK - 2025 -P006</p>
+                                <span class="badge-waiting">Menunggu Antrian</span>
+                            </div>
+                            <div class="queue-arrow">&gt;</div>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="form-panel-card">
+                    <h3 class="panel-title">Formulir Pemeriksaan (Rekam Medis)</h3>
+                    
+                    <div class="patient-meta-header">
+                        <div class="meta-item">Nama: <strong id="meta-nama">-</strong></div>
+                        <div class="meta-item">Umur: <strong id="meta-umur">-</strong></div>
+                        <div class="meta-item">Jenis Kelamin: <strong id="meta-gender">-</strong></div>
+                        <div class="meta-item alergi-box" id="meta-alergi-container" style="display: none;">
+                            Alergi: <strong id="meta-alergi">-</strong>
+                        </div>
+                    </div>
+
+                    <form onsubmit="event.preventDefault(); alert('Data Rekam Medis Berhasil Disimpan!');">
+                        
+                        <div class="form-group">
+                            <label>Keluhan Utama <span class="required">*</span></label>
+                            <textarea placeholder="Masukkan keluhan" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-grid-three">
+                            <div class="form-group">
+                                <label>Tekanan Darah <span class="required">*</span></label>
+                                <div class="input-with-unit">
+                                    <input type="text" required>
+                                    <span class="unit-text">mmHg</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Suhu <span class="required">*</span></label>
+                                <div class="input-with-unit">
+                                    <input type="text" required>
+                                    <span class="unit-text">°C</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Nadi <span class="required">*</span></label>
+                                <div class="input-with-unit">
+                                    <input type="text" required>
+                                    <span class="unit-text">x/menit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-two-centered">
+                            <div class="form-group">
+                                <label>RR <span class="required">*</span></label>
+                                <div class="input-with-unit">
+                                    <input type="text" required>
+                                    <span class="unit-text">x/menit</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Berat Badan <span class="required">*</span></label>
+                                <div class="input-with-unit">
+                                    <input type="text" required>
+                                    <span class="unit-text">Kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Diagnosa <span class="required">*</span></label>
+                            <textarea placeholder="Masukkan diagnosa" rows="2" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Resep Obat dan Tindakan Dokter <span class="required">*</span></label>
+                            <textarea placeholder="Masukkan detail resep dan tindakan" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-actions-row">
+                            <button type="button" class="btn-outline-back" onclick="location.href='dashboard.html'">Kembali</button>
+                            <button type="submit" class="btn-solid-save">Simpan</button>
+                        </div>
+                    </form>
+                </main>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dokter-component-loader.js"></script>
+    <script>
+        // Simulasi Database Pasien
+        const dataPasien = {
+            "P003": {
+                nama: "Lailia Trihapsari",
+                umur: "23 Tahun",
+                gender: "Perempuan",
+                alergi: "TIDAK ADA"
+            },
+            "P006": {
+                nama: "Muhammad Althaf",
+                umur: "17 Tahun",
+                gender: "Laki-laki",
+                alergi: "PENICILIN"
+            }
+        };
+
+        // Fungsi interaktif saat kartu antrian diklik
+        function pilihPasien(idPasien, elementCard) {
+            // 1. Ubah gaya kartu menjadi aktif
+            document.querySelectorAll('.queue-card-item').forEach(card => card.classList.remove('active'));
+            elementCard.classList.add('active');
+
+            // 2. Ambil data dari object simulasi
+            const pasien = dataPasien[idPasien];
+
+            // 3. Tembak data ke header formulir
+            document.getElementById('meta-nama').innerText = pasien.nama;
+            document.getElementById('meta-umur').innerText = pasien.umur;
+            document.getElementById('meta-gender').innerText = pasien.gender;
+            
+            const alergiContainer = document.getElementById('meta-alergi-container');
+            const alergiText = document.getElementById('meta-alergi');
+            
+            // Logika kemunculan badge merah Alergi
+            if (pasien.alergi !== "TIDAK ADA") {
+                alergiContainer.style.display = "block";
+                alergiText.innerText = pasien.alergi;
+            } else {
+                alergiContainer.style.display = "none";
+            }
+        }
+
+        // Otomatis pilih pasien pertama saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", () => {
+            const firstCard = document.querySelector('.queue-card-item');
+            if (firstCard) {
+                firstCard.click();
+            }
+        });
+    </script>
+</body>
+</html>

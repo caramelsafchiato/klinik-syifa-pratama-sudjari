@@ -23,8 +23,14 @@ function handleLogin(event) {
         localStorage.setItem('userRole', userFound.role);
         localStorage.setItem('isLoggedIn', 'true');
 
-        // Alihkan otomatis ke halaman dashboard
-        window.location.href = 'admin/dashboard.html'; 
+        // Alihkan otomatis ke halaman dashboard sesuai dengan Role-nya
+        if (userFound.role === 'dokter') {
+            window.location.href = 'dokter/dashboard.html';
+        } else if (userFound.role === 'pemilik') {
+            window.location.href = 'pemilik/dashboard.html';
+        } else if (userFound.role === 'admin') {
+            window.location.href = 'admin/dashboard.html'; 
+        }
     } else {
         // Tampilkan pesan error jika salah
         errorMessage.innerText = "Username atau password salah!";
@@ -35,7 +41,9 @@ function handleLogin(event) {
 // 3. FUNGSI LOGOUT STAFF
 function handleLogout() {
     localStorage.clear(); // Menghapus data login di browser
-    window.location.href = 'index.html'; // Kembalikan ke Landing Page utama
+    
+    // Pastikan path-nya disesuaikan. Jika tombol logout ada di dalam folder admin/dokter, gunakan '../index.html'
+    window.location.href = '../index.html'; 
 }
 
 // 4. FUNGSI PROTEKSI HALAMAN INTERNAL
@@ -47,13 +55,22 @@ function checkPageAccess(allowedRoles) {
     // Cek apakah sudah login
     if (!isLoggedIn || isLoggedIn !== 'true') {
         alert('Akses ditolak! Anda harus login terlebih dahulu.');
-        window.location.href = 'login.html';
+        // Pastikan path-nya disesuaikan jika file berada di dalam folder
+        window.location.href = '../login.html'; 
         return;
     }
 
     // Cek apakah role diizinkan melihat halaman ini
     if (!allowedRoles.includes(userRole)) {
         alert('Anda tidak memiliki izin (hak akses) untuk halaman ini!');
-        window.location.href = 'index.html'; 
+        
+        // Lempar kembali ke dashboard masing-masing jika memaksa masuk halaman role lain
+        if (userRole === 'dokter') {
+            window.location.href = '../dokter/dashboard.html';
+        } else if (userRole === 'pemilik') {
+            window.location.href = '../pemilik/dashboard.html';
+        } else {
+            window.location.href = '../admin/dashboard.html';
+        }
     }
 }
