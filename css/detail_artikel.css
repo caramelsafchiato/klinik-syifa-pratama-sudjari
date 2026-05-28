@@ -6,7 +6,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 5%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     display: grid;
     grid-template-columns: 2.5fr 1fr; /* Kolom utama lebih lebar dibanding sidebar */
     gap: 50px;

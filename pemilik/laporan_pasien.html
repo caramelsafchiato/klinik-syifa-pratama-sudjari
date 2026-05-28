@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Pasien - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/pemilik_global.css">
+    <link rel="stylesheet" href="css/laporan_pasien.css">
+</head>
+<body>
+    <div class="pemilik-layout-grid">
+        <aside id="pemilik-sidebar-placeholder"></aside>
+
+        <div class="pemilik-main-content">
+            <header id="pemilik-header-placeholder"></header>
+
+            <main class="laporan-pasien-page">
+                <div class="laporan-toolbar">
+                    <div class="toolbar-actions">
+                        <button class="toolbar-button">📅 1 Nov - 30 Nov</button>
+                        <button class="toolbar-button">⬇ Export Excel</button>
+                    </div>
+                </div>
+
+                <section class="table-card">
+                    <div class="table-responsive">
+                        <table class="pasien-report-table">
+                            <thead>
+                                <tr>
+                                    <th>NIK</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Alamat</th>
+                                    <th>No. Telepon</th>
+                                    <th>Rekam Medis</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>327327...</td>
+                                    <td><strong>Browi Nugroho</strong></td>
+                                    <td>Laki - Laki</td>
+                                    <td>Makassar</td>
+                                    <td>08128305xxxx</td>
+                                    <td>
+                                        <button class="btn-table-medis" type="button"
+                                            data-nama="Browi Nugroho"
+                                            data-umur="25 Tahun"
+                                            data-gender="Laki - Laki"
+                                            data-alergi="PENICILIN"
+                                            data-keluhan="Demam naik turun dari 3 hari yang lalu, disertai mual dan pusing tetapi tidak batuk dan pilek."
+                                            data-diagnosa="Febris hari ke - 3 (Suspect Typoid), Dyspepsia"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup dan banyak minum air putih."
+                                            data-history="10 Oktober 2025|Dr. Bayu Andi;30 Maret 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">📄 Lihat Rekam Medis</button>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button type="button"
+                                            data-nama="Browi Nugroho"
+                                            data-umur="25 Tahun"
+                                            data-gender="Laki - Laki"
+                                            data-alergi="PENICILIN"
+                                            data-keluhan="Demam naik turun dari 3 hari yang lalu, disertai mual dan pusing tetapi tidak batuk dan pilek."
+                                            data-diagnosa="Febris hari ke - 3 (Suspect Typoid), Dyspepsia"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup dan banyak minum air putih."
+                                            data-history="10 Oktober 2025|Dr. Bayu Andi;30 Maret 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">👁</button>
+                                        <button type="button" onclick="alert('Fitur edit pasien belum diaktifkan.')">✏️</button>
+                                        <button type="button" class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>318345...</td>
+                                    <td><strong>Valerina Dzakiyya</strong></td>
+                                    <td>Perempuan</td>
+                                    <td>Surabaya</td>
+                                    <td>08119875xxxx</td>
+                                    <td>
+                                        <button class="btn-table-medis" type="button"
+                                            data-nama="Valerina Dzakiyya"
+                                            data-umur="22 Tahun"
+                                            data-gender="Perempuan"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Keluhan demam sejak 5 hari disertai pusing ringan."
+                                            data-diagnosa="Demam viral"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nBanyak istirahat dan minum air putih."
+                                            data-history="11 Nov 2025|Dr. Difa Hussaina;26 Juli 2025|Dr. Sutjipto Utomo"
+                                            onclick="bukaModalRekamMedis(this)">📄 Lihat Rekam Medis</button>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button type="button"
+                                            data-nama="Valerina Dzakiyya"
+                                            data-umur="22 Tahun"
+                                            data-gender="Perempuan"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Keluhan demam sejak 5 hari disertai pusing ringan."
+                                            data-diagnosa="Demam viral"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nBanyak istirahat dan minum air putih."
+                                            data-history="11 Nov 2025|Dr. Difa Hussaina;26 Juli 2025|Dr. Sutjipto Utomo"
+                                            onclick="bukaModalRekamMedis(this)">👁</button>
+                                        <button type="button" onclick="alert('Fitur edit pasien belum diaktifkan.')">✏️</button>
+                                        <button type="button" class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>358367...</td>
+                                    <td><strong>Lailia Trihapsari</strong></td>
+                                    <td>Perempuan</td>
+                                    <td>Jombang</td>
+                                    <td>08583476xxxx</td>
+                                    <td>
+                                        <button class="btn-table-medis" type="button"
+                                            data-nama="Lailia Trihapsari"
+                                            data-umur="23 Tahun"
+                                            data-gender="Perempuan"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Keluhan batuk dan demam ringan sejak 2 hari terakhir."
+                                            data-diagnosa="Common cold"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="26 Juli 2025|Dr. Sutjipto Utomo;12 Mei 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">📄 Lihat Rekam Medis</button>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button type="button"
+                                            data-nama="Lailia Trihapsari"
+                                            data-umur="23 Tahun"
+                                            data-gender="Perempuan"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Keluhan batuk dan demam ringan sejak 2 hari terakhir."
+                                            data-diagnosa="Common cold"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="26 Juli 2025|Dr. Sutjipto Utomo;12 Mei 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">👁</button>
+                                        <button type="button" onclick="alert('Fitur edit pasien belum diaktifkan.')">✏️</button>
+                                        <button type="button" class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>392386...</td>
+                                    <td><strong>Andhika Muhammad</strong></td>
+                                    <td>Laki - Laki</td>
+                                    <td>Sidoarjo</td>
+                                    <td>08884622xxxx</td>
+                                    <td>
+                                        <button class="btn-table-medis" type="button"
+                                            data-nama="Andhika Muhammad"
+                                            data-umur="24 Tahun"
+                                            data-gender="Laki - Laki"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Keluhan pusing dan demam ringan."
+                                            data-diagnosa="Myalgia"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="10 Oktober 2025|Dr. Bayu Andi;30 Maret 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">📄 Lihat Rekam Medis</button>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button type="button"
+                                            data-nama="Andhika Muhammad"
+                                            data-umur="24 Tahun"
+                                            data-gender="Laki - Laki"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Keluhan pusing dan demam ringan."
+                                            data-diagnosa="Myalgia"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="10 Oktober 2025|Dr. Bayu Andi;30 Maret 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">👁</button>
+                                        <button type="button" onclick="alert('Fitur edit pasien belum diaktifkan.')">✏️</button>
+                                        <button type="button" class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>392387...</td>
+                                    <td><strong>Marsha Adhia</strong></td>
+                                    <td>Perempuan</td>
+                                    <td>Sidoarjo</td>
+                                    <td>08584332xxxx</td>
+                                    <td>
+                                        <button class="btn-table-medis" type="button"
+                                            data-nama="Marsha Adhia"
+                                            data-umur="21 Tahun"
+                                            data-gender="Perempuan"
+                                            data-alergi="PENICILIN"
+                                            data-keluhan="Demam naik turun dari 3 hari yang lalu."
+                                            data-diagnosa="Febris"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="10 Oktober 2025|Dr. Bayu Andi;30 Maret 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">📄 Lihat Rekam Medis</button>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button type="button"
+                                            data-nama="Marsha Adhia"
+                                            data-umur="21 Tahun"
+                                            data-gender="Perempuan"
+                                            data-alergi="PENICILIN"
+                                            data-keluhan="Demam naik turun dari 3 hari yang lalu."
+                                            data-diagnosa="Febris"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="10 Oktober 2025|Dr. Bayu Andi;30 Maret 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">👁</button>
+                                        <button type="button" onclick="alert('Fitur edit pasien belum diaktifkan.')">✏️</button>
+                                        <button type="button" class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>327328...</td>
+                                    <td><strong>Muhammad Althaf</strong></td>
+                                    <td>Laki - Laki</td>
+                                    <td>Surabaya</td>
+                                    <td>08124962xxxx</td>
+                                    <td>
+                                        <button class="btn-table-medis" type="button"
+                                            data-nama="Muhammad Althaf"
+                                            data-umur="17 Tahun"
+                                            data-gender="Laki - Laki"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Demam dan batuk ringan."
+                                            data-diagnosa="Common cold"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="26 Juli 2025|Dr. Sutjipto Utomo;12 Mei 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">📄 Lihat Rekam Medis</button>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button type="button"
+                                            data-nama="Muhammad Althaf"
+                                            data-umur="17 Tahun"
+                                            data-gender="Laki - Laki"
+                                            data-alergi="TIDAK ADA"
+                                            data-keluhan="Demam dan batuk ringan."
+                                            data-diagnosa="Common cold"
+                                            data-resep="R/ Paracetamol 500mg No. X (3x1)\nIstirahat cukup."
+                                            data-history="26 Juli 2025|Dr. Sutjipto Utomo;12 Mei 2025|Dr. Difa Hussaina"
+                                            onclick="bukaModalRekamMedis(this)">👁</button>
+                                        <button type="button" onclick="alert('Fitur edit pasien belum diaktifkan.')">✏️</button>
+                                        <button type="button" class="delete-btn" onclick="this.closest('tr').remove()">🗑</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="modalRekamMedis" class="modal-overlay">
+        <div class="modal-content-box width-rekam-medis">
+            <div class="meta-medis-header">
+                <span>Nama: <strong id="pop-med-nama">-</strong></span>
+                <span>Umur: <strong id="pop-med-umur">-</strong></span>
+                <span>Jenis Kelamin: <strong id="pop-med-gender">-</strong></span>
+                <div class="badge-alergies">Alergi: <strong id="pop-med-alergi" style="color:white">-</strong></div>
+            </div>
+
+            <div class="med-split-grid">
+                <div>
+                    <div class="med-box-group">
+                        <h5>Keluhan Utama (Anamnesa)</h5>
+                        <div class="med-text-value" id="pop-med-keluhan">-</div>
+                    </div>
+
+                    <div class="vitals-mini-grid">
+                        <div class="vital-badge-box"><span>Tekanan Darah</span><strong>110/80 mmHg</strong></div>
+                        <div class="vital-badge-box"><span>Suhu</span><strong>39.0 °C</strong></div>
+                        <div class="vital-badge-box"><span>Nadi</span><strong>82 x/menit</strong></div>
+                        <div class="vital-badge-box"><span>RR</span><strong>21 x/menit</strong></div>
+                        <div class="vital-badge-box"><span>Berat Badan</span><strong>70 Kg</strong></div>
+                    </div>
+
+                    <div class="med-box-group" style="margin-top:15px;">
+                        <h5>Diagnosa Dokter</h5>
+                        <div class="med-text-value" id="pop-med-diagnosa">-</div>
+                    </div>
+
+                    <div class="med-box-group">
+                        <h5>Resep obat & Tindakan</h5>
+                        <div class="med-text-value" id="pop-med-resep"></div>
+                    </div>
+
+                    <button class="btn-modal-back-link" type="button" onclick="tutupModalRekamMedis()">&lt; back</button>
+                </div>
+
+                <div>
+                    <h4 style="font-size:0.9rem; color:#334155; margin-top:0;">Riwayat Kunjungan Terakhir</h4>
+                    <div class="history-timeline-box" id="pop-med-history-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/pemilik-component-loader.js"></script>
+    <script>
+        function renderHistoryTimeline(historyText) {
+            const historyBox = document.getElementById('pop-med-history-box');
+            if (!historyBox) return;
+
+            const historyItems = (historyText || '').split(';').map(item => item.trim()).filter(Boolean);
+            historyBox.innerHTML = historyItems.map((item, index) => {
+                const [tanggal = '-', dokter = '-'] = item.split('|');
+                const activeClass = index === 0 ? ' active-node' : '';
+                return `<div class="history-item${activeClass}"><h6>${tanggal}</h6><p>${dokter}</p></div>`;
+            }).join('');
+        }
+
+        function bukaModalRekamMedis(triggerElement) {
+            document.getElementById('pop-med-nama').innerText = triggerElement.getAttribute('data-nama') || '-';
+            document.getElementById('pop-med-umur').innerText = triggerElement.getAttribute('data-umur') || '-';
+            document.getElementById('pop-med-gender').innerText = triggerElement.getAttribute('data-gender') || '-';
+            document.getElementById('pop-med-alergi').innerText = triggerElement.getAttribute('data-alergi') || '-';
+            document.getElementById('pop-med-keluhan').innerText = triggerElement.getAttribute('data-keluhan') || '-';
+            document.getElementById('pop-med-diagnosa').innerText = triggerElement.getAttribute('data-diagnosa') || '-';
+            document.getElementById('pop-med-resep').innerText = triggerElement.getAttribute('data-resep') || '-';
+
+            renderHistoryTimeline(triggerElement.getAttribute('data-history') || '');
+            document.getElementById('modalRekamMedis').classList.add('open');
+        }
+
+        function tutupModalRekamMedis() {
+            document.getElementById('modalRekamMedis').classList.remove('open');
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                tutupModalRekamMedis();
+            }
+        });
+
+        document.getElementById('modalRekamMedis').addEventListener('click', function (event) {
+            if (event.target === this) {
+                tutupModalRekamMedis();
+            }
+        });
+    </script>
+</body>
+</html>

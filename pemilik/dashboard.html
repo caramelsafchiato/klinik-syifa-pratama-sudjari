@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pemilik - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/pemilik_global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="pemilik-layout-grid">
+        <aside id="pemilik-sidebar-placeholder"></aside>
+
+        <div class="pemilik-main-content">
+            <header id="pemilik-header-placeholder"></header>
+
+            <main class="dashboard-wrapper">
+                <section class="stats-grid">
+                    <article class="stat-card stat-blue">
+                        <div class="stat-copy">
+                            <span>Total Pendapatan Hari Ini</span>
+                            <h3>Rp. 850.000</h3>
+                        </div>
+                        <div class="stat-icon">💳</div>
+                    </article>
+                    <article class="stat-card stat-green">
+                        <div class="stat-copy">
+                            <span>Total Pasien</span>
+                            <h3>279</h3>
+                        </div>
+                        <div class="stat-icon">📈</div>
+                    </article>
+                    <article class="stat-card stat-amber">
+                        <div class="stat-copy">
+                            <span>Layanan Terlaris</span>
+                            <h3>Poli Umum</h3>
+                        </div>
+                        <div class="stat-icon">⭐</div>
+                    </article>
+                    <article class="stat-card stat-rose">
+                        <div class="stat-copy">
+                            <span>Rating Klinik</span>
+                            <h3>4.8/5.0</h3>
+                        </div>
+                        <div class="stat-icon">❤</div>
+                    </article>
+                </section>
+
+                <section class="content-split">
+                    <article class="main-chart-area">
+                        <div class="section-head-row">
+                            <div>
+                                <h2>Statistik Klinik</h2>
+                                <p>Income vs Expenses dan trend trafik pasien selama bulan ini.</p>
+                            </div>
+                            <div class="chart-actions">
+                                <button class="chip-button">1 Minggu</button>
+                                <button class="chip-button active">1 Bulan</button>
+                                <button class="chip-button">Export Excel</button>
+                            </div>
+                        </div>
+
+                        <div class="chart-panel">
+                            <div class="bar-chart-wrap">
+                                <div class="y-axis-labels">
+                                    <span>Rp 1.2M</span>
+                                    <span>Rp 0.9M</span>
+                                    <span>Rp 0.6M</span>
+                                    <span>Rp 0.3M</span>
+                                    <span>Rp 0.0M</span>
+                                </div>
+                                <div class="bar-chart-visual">
+                                    <div class="bar-group"><span class="bar primary" style="height: 68%"></span><span class="bar secondary" style="height: 40%"></span><label>01</label></div>
+                                    <div class="bar-group"><span class="bar primary" style="height: 72%"></span><span class="bar secondary" style="height: 31%"></span><label>02</label></div>
+                                    <div class="bar-group"><span class="bar primary" style="height: 61%"></span><span class="bar secondary" style="height: 44%"></span><label>03</label></div>
+                                    <div class="bar-group"><span class="bar primary" style="height: 70%"></span><span class="bar secondary" style="height: 39%"></span><label>04</label></div>
+                                    <div class="bar-group"><span class="bar primary" style="height: 85%"></span><span class="bar secondary" style="height: 46%"></span><label>05</label></div>
+                                </div>
+                            </div>
+
+                            <div class="trend-chart-wrap">
+                                <div class="trend-head">Patient Traffic Trend</div>
+                                <svg viewBox="0 0 680 220" class="trend-svg" aria-label="Patient traffic trend chart">
+                                    <defs>
+                                        <linearGradient id="trendFill" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#1d60a1" stop-opacity="0.22" />
+                                            <stop offset="100%" stop-color="#1d60a1" stop-opacity="0.02" />
+                                        </linearGradient>
+                                    </defs>
+                                    <line x1="50" y1="35" x2="650" y2="35" class="grid-line" />
+                                    <line x1="50" y1="80" x2="650" y2="80" class="grid-line" />
+                                    <line x1="50" y1="125" x2="650" y2="125" class="grid-line" />
+                                    <line x1="50" y1="170" x2="650" y2="170" class="grid-line" />
+                                    <path d="M50 150 C110 130, 150 110, 190 120 S270 165, 320 150 S410 90, 470 95 S550 60, 610 105" class="trend-area" />
+                                    <path d="M50 150 C110 130, 150 110, 190 120 S270 165, 320 150 S410 90, 470 95 S550 60, 610 105" class="trend-line" />
+                                </svg>
+                                <div class="trend-axis">
+                                    <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="top-performers">
+                        <div class="section-head-row compact">
+                            <div>
+                                <h2>Top Performa Dokter</h2>
+                                <p>Produktivitas dokter paling tinggi bulan ini.</p>
+                            </div>
+                        </div>
+
+                        <div class="performer-list">
+                            <div class="performer-item">
+                                <div class="performer-avatar">
+                                    <img src="../assets/images/dokter 3.png" alt="Dr. Bayu">
+                                </div>
+                                <div class="performer-meta">
+                                    <div class="performer-top-row"><strong>Dr. Bayu Andi</strong><span>38 Pasien</span></div>
+                                    <div class="performer-bar"><span style="width: 88%"></span></div>
+                                </div>
+                            </div>
+                            <div class="performer-item">
+                                <div class="performer-avatar">
+                                    <img src="../assets/images/dokter 1.png" alt="Dr. Usman Ali">
+                                </div>
+                                <div class="performer-meta">
+                                    <div class="performer-top-row"><strong>Dr. Usman Ali</strong><span>27 Pasien</span></div>
+                                    <div class="performer-bar"><span style="width: 74%"></span></div>
+                                </div>
+                            </div>
+                            <div class="performer-item">
+                                <div class="performer-avatar">
+                                    <img src="../assets/images/dokter 2.png" alt="Dr. Difa Hussaina">
+                                </div>
+                                <div class="performer-meta">
+                                    <div class="performer-top-row"><strong>Dr. Difa Hussaina</strong><span>22 Pasien</span></div>
+                                    <div class="performer-bar"><span style="width: 60%"></span></div>
+                                </div>
+                            </div>
+                            <div class="performer-item">
+                                <div class="performer-avatar">
+                                    <img src="../assets/images/dokter 4.png" alt="Dr. Sutjipto Utomo">
+                                </div>
+                                <div class="performer-meta">
+                                    <div class="performer-top-row"><strong>Dr. Sutjipto Utomo</strong><span>18 Pasien</span></div>
+                                    <div class="performer-bar"><span style="width: 46%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </section>
+
+                <section class="recent-transactions">
+                    <div class="section-head-row compact">
+                        <div>
+                            <h2>Transaksi Terakhir</h2>
+                            <p>Ringkasan pembayaran yang baru selesai diproses.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Nama Pasien</th>
+                                    <th>Layanan</th>
+                                    <th>Total Bayar</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>21.49</td>
+                                    <td>Muhammad Faachri</td>
+                                    <td>Umum + Obat</td>
+                                    <td>Rp. 150.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                                <tr>
+                                    <td>21.21</td>
+                                    <td>Muhammad Faadhil</td>
+                                    <td>Umum</td>
+                                    <td>Rp. 50.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20.58</td>
+                                    <td>Arsyad Baim</td>
+                                    <td>Umum + Obat</td>
+                                    <td>Rp. 130.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20.35</td>
+                                    <td>Angelyna Rahmah</td>
+                                    <td>Umum + Obat</td>
+                                    <td>Rp. 113.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/pemilik-component-loader.js"></script>
+</body>
+</html>

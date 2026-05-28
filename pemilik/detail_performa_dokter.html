@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Performa Dokter - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/pemilik_global.css">
+    <link rel="stylesheet" href="css/detail_performa_dokter.css">
+</head>
+<body>
+    <div class="pemilik-layout-grid">
+        <aside id="pemilik-sidebar-placeholder"></aside>
+
+        <div class="pemilik-main-content">
+            <header id="pemilik-header-placeholder"></header>
+
+            <main class="detail-performa-page">
+                <div class="detail-top-row">
+                    <a class="back-link" href="performa_dokter.html">&larr; Kembali ke Performa Dokter</a>
+                    <button class="month-chip">📅 November</button>
+                </div>
+
+                <section class="doctor-summary-card">
+                    <img id="detailDoctorPhoto" src="../assets/images/dokter 3.png" alt="Dokter">
+                    <div class="summary-copy">
+                        <h2 id="detailDoctorName">Dr. Bayu Andi</h2>
+                        <p id="detailDoctorSpec">Umum</p>
+                        <div class="summary-tags">
+                            <span class="summary-tag">Top Performa Bulan Ini</span>
+                            <span class="summary-tag muted">November 2025</span>
+                        </div>
+                    </div>
+                    <div class="summary-metrics">
+                        <div class="summary-metric">
+                            <span>Total Pasien</span>
+                            <strong id="detailTotalPasien">38</strong>
+                        </div>
+                        <div class="summary-metric summary-blue">
+                            <span>Pendapatan</span>
+                            <strong id="detailPendapatan">Rp. 1.900.000,00</strong>
+                        </div>
+                        <div class="summary-metric summary-green">
+                            <span>Persentase Keaktifan</span>
+                            <strong>94%</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="detail-grid">
+                    <article class="chart-panel-card">
+                        <div class="panel-head">
+                            <h3>Trend Pelayanan</h3>
+                            <p>Jumlah pasien dan pendapatan harian dokter terpilih.</p>
+                        </div>
+                        <div class="line-chart-wrap">
+                            <div class="chart-scale">
+                                <span>40</span>
+                                <span>30</span>
+                                <span>20</span>
+                                <span>10</span>
+                                <span>0</span>
+                            </div>
+                            <div class="line-chart-body">
+                                <svg viewBox="0 0 620 220" class="trend-svg" aria-label="Trend pelayanan dokter">
+                                    <line x1="0" y1="35" x2="620" y2="35" class="grid-line" />
+                                    <line x1="0" y1="80" x2="620" y2="80" class="grid-line" />
+                                    <line x1="0" y1="125" x2="620" y2="125" class="grid-line" />
+                                    <line x1="0" y1="170" x2="620" y2="170" class="grid-line" />
+                                    <path id="trendArea" class="trend-area" d="M20 155 C90 145, 120 130, 160 122 S245 95, 300 100 S395 72, 450 88 S540 52, 600 68" />
+                                    <path id="trendLine" class="trend-line" d="M20 155 C90 145, 120 130, 160 122 S245 95, 300 100 S395 72, 450 88 S540 52, 600 68" />
+                                </svg>
+                                <div class="trend-axis">
+                                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="stats-side-card">
+                        <div class="panel-head compact">
+                            <h3>Rekap Bulanan</h3>
+                            <p>Rangkuman performa dokter.</p>
+                        </div>
+
+                        <div class="small-stat-list">
+                            <div class="small-stat-item">
+                                <span>Rata-rata Pasien / Hari</span>
+                                <strong>2 - 3 pasien</strong>
+                            </div>
+                            <div class="small-stat-item">
+                                <span>Kasus Selesai</span>
+                                <strong>36 Kasus</strong>
+                            </div>
+                            <div class="small-stat-item">
+                                <span>Rata-rata Pendapatan</span>
+                                <strong>Rp. 95.000</strong>
+                            </div>
+                        </div>
+                    </aside>
+                </section>
+
+                <section class="detail-table-card">
+                    <div class="panel-head compact">
+                        <h3>Daftar Pasien & Tindakan</h3>
+                        <p>Detail kunjungan pasien yang ditangani dokter ini.</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="detail-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Nama Pasien</th>
+                                    <th>Keluhan</th>
+                                    <th>Diagnosa</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailDoctorRows"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/pemilik-component-loader.js"></script>
+    <script>
+        const doctorData = {
+            bayu: {
+                name: 'Dr. Bayu Andi',
+                spec: 'Umum',
+                photo: '../assets/images/dokter 3.png',
+                total: '38',
+                income: 'Rp. 1.900.000,00',
+                rows: [
+                    ['01 Nov 2025', 'Muhammad Fachri', 'Demam dan pusing', 'Febris', 'Selesai'],
+                    ['03 Nov 2025', 'Valerina Dzakiyya', 'Batuk ringan', 'Common cold', 'Selesai'],
+                    ['06 Nov 2025', 'Lailia Trihapsari', 'Mual dan lemas', 'Dyspepsia', 'Selesai']
+                ]
+            },
+            usman: {
+                name: 'Dr. Usman Ali',
+                spec: 'Umum',
+                photo: '../assets/images/dokter 1.png',
+                total: '32',
+                income: 'Rp. 1.600.000,00',
+                rows: [
+                    ['02 Nov 2025', 'Andhika Muhammad', 'Nyeri otot', 'Myalgia', 'Selesai'],
+                    ['05 Nov 2025', 'Marsha Adhia', 'Demam', 'Febris', 'Selesai'],
+                    ['09 Nov 2025', 'Muhammad Althaf', 'Batuk ringan', 'Common cold', 'Selesai']
+                ]
+            },
+            difa: {
+                name: 'Dr. Difa Hussaina',
+                spec: 'Umum',
+                photo: '../assets/images/dokter 2.png',
+                total: '28',
+                income: 'Rp. 1.400.000,00',
+                rows: [
+                    ['04 Nov 2025', 'Browi Nugroho', 'Demam naik turun', 'Febris', 'Selesai'],
+                    ['07 Nov 2025', 'Angelyna Rahmah', 'Pusing', 'Cephalgia', 'Selesai'],
+                    ['12 Nov 2025', 'Valerina Dzakiyya', 'Batuk dan pilek', 'ISPA', 'Selesai']
+                ]
+            },
+            sutjipto: {
+                name: 'Dr. Sutjipto Utomo',
+                spec: 'Umum',
+                photo: '../assets/images/dokter 4.png',
+                total: '22',
+                income: 'Rp. 1.100.000,00',
+                rows: [
+                    ['01 Nov 2025', 'Lailia Trihapsari', 'Batuk kering', 'Pharyngitis', 'Selesai'],
+                    ['08 Nov 2025', 'Muhammad Althaf', 'Demam ringan', 'Febris', 'Selesai'],
+                    ['13 Nov 2025', 'Marsha Adhia', 'Lemas', 'Fatigue', 'Selesai']
+                ]
+            }
+        };
+
+        function getDoctorKey() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('dokter') || 'bayu';
+        }
+
+        function renderDoctorDetail() {
+            const doctor = doctorData[getDoctorKey()] || doctorData.bayu;
+
+            document.getElementById('detailDoctorName').innerText = doctor.name;
+            document.getElementById('detailDoctorSpec').innerText = doctor.spec;
+            document.getElementById('detailDoctorPhoto').src = doctor.photo;
+            document.getElementById('detailDoctorPhoto').alt = doctor.name;
+            document.getElementById('detailTotalPasien').innerText = doctor.total;
+            document.getElementById('detailPendapatan').innerText = doctor.income;
+
+            const tbody = document.getElementById('detailDoctorRows');
+            tbody.innerHTML = doctor.rows.map(row => `
+                <tr>
+                    <td>${row[0]}</td>
+                    <td>${row[1]}</td>
+                    <td>${row[2]}</td>
+                    <td>${row[3]}</td>
+                    <td><span class="status-pill done">${row[4]}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderDoctorDetail);
+    </script>
+</body>
+</html>

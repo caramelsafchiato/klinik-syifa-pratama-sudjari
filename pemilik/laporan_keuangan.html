@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Keuangan - Klinik Syifa Pratama Sudjari</title>
+    <link rel="stylesheet" href="css/pemilik_global.css">
+    <link rel="stylesheet" href="css/laporan_keuangan.css">
+</head>
+<body>
+    <div class="pemilik-layout-grid">
+        <aside id="pemilik-sidebar-placeholder"></aside>
+
+        <div class="pemilik-main-content">
+            <header id="pemilik-header-placeholder"></header>
+
+            <main class="laporan-keuangan-page">
+                <div class="laporan-toolbar">
+                    <div class="toolbar-actions">
+                        <button class="toolbar-button">📅 1 Nov - 30 Nov</button>
+                        <button class="toolbar-button">⬇ Export Excel</button>
+                    </div>
+                </div>
+
+                <section class="chart-card">
+                    <div class="chart-card-head">
+                        <h2>Pendapatan Harian</h2>
+                    </div>
+
+                    <div class="bar-chart-area">
+                        <div class="y-axis-values">
+                            <span>3.6jt</span>
+                            <span>2.7jt</span>
+                            <span>1.8jt</span>
+                            <span>0.9jt</span>
+                            <span>0jt</span>
+                        </div>
+
+                        <div class="bar-chart-body">
+                            <div class="bar-group"><span class="bar" style="height: 64%"></span><label>1 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 48%"></span><label>2 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 86%"></span><label>3 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 74%"></span><label>4 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 42%"></span><label>5 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 28%"></span><label>6 Nov</label></div>
+                            <div class="bar-group"><span class="bar empty" style="height: 6%"></span><label>7 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 56%"></span><label>8 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 70%"></span><label>9 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 92%"></span><label>10 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 77%"></span><label>11 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 44%"></span><label>12 Nov</label></div>
+                            <div class="bar-group"><span class="bar" style="height: 24%"></span><label>13 Nov</label></div>
+                            <div class="bar-group"><span class="bar empty" style="height: 6%"></span><label>14 Nov</label></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="table-card">
+                    <div class="table-card-head">
+                        <h2>Rincian Transaksi</h2>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="laporan-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Kode Booking</th>
+                                    <th>Nama Pasien</th>
+                                    <th>Layanan</th>
+                                    <th>Total Bayar</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20 Nov 2025</td>
+                                    <td>KSK - 2025 - P011</td>
+                                    <td>Muhammad Fachri</td>
+                                    <td>Umum + Obat</td>
+                                    <td>Rp. 150.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20 Nov 2025</td>
+                                    <td>KSK - 2025 - P010</td>
+                                    <td>Muhammad Faadhil</td>
+                                    <td>Umum</td>
+                                    <td>Rp. 50.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20 Nov 2025</td>
+                                    <td>KSK - 2025 - P009</td>
+                                    <td>Arsyad Baim</td>
+                                    <td>Umum + Obat</td>
+                                    <td>Rp. 130.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20 Nov 2025</td>
+                                    <td>KSK - 2025 - P008</td>
+                                    <td>Angelyna Rahmah</td>
+                                    <td>Umum + Obat</td>
+                                    <td>Rp. 113.000,00</td>
+                                    <td><span class="status-badge paid">Lunas</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/pemilik-component-loader.js"></script>
+</body>
+</html>
